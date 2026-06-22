@@ -1,0 +1,21 @@
+{
+  "name": "nassim-hammami-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio of Nassim Hammami — Machine Learning & Computer Vision Engineer",
+  "type": "module",
+  "author": "Nassim Hammami",
+  "license": "MIT",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.5.1",
+    "@fontsource-variable/inter": "^5.2.6",
+    "@fontsource-variable/jetbrains-mono": "^5.2.6",
+    "astro": "^5.14.1"
+  }
+}

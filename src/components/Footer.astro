@@ -1,0 +1,126 @@
+---
+import { profile } from '../data/profile';
+import Icon from './Icon.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark mono">{profile.initials}</span>
+      <div>
+        <p class="footer-name">{profile.name}</p>
+        <p class="footer-role mono">{profile.role}</p>
+      </div>
+    </div>
+
+    <nav class="footer-socials" aria-label="Social links">
+      {
+        profile.socials.map((s) => (
+          <a
+            href={s.href}
+            aria-label={s.label}
+            target={s.icon === 'mail' ? undefined : '_blank'}
+            rel="noopener"
+          >
+            <Icon name={s.icon} class="ic" />
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <p class="mono">© {year} {profile.name}. Built with Astro.</p>
+    <a href="#top" class="footer-top mono">back to top ↑</a>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-block: 3rem 2rem;
+    background: var(--bg-elev);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    color: var(--accent-bright);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .footer-name {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.98rem;
+  }
+
+  .footer-role {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .footer-socials a {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+  }
+
+  .footer-socials a:hover {
+    color: var(--accent-bright);
+    border-color: var(--accent-line);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    padding-top: 1.6rem;
+  }
+
+  .footer-bottom p,
+  .footer-top {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  .footer-top:hover {
+    color: var(--accent);
+  }
+</style>

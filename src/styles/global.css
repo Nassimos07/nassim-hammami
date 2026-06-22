@@ -1,0 +1,334 @@
+/* ===========================================================================
+   GLOBAL STYLES — dark technical theme
+   Design tokens, reset, typography, and shared primitives.
+   =========================================================================== */
+
+:root {
+  /* ── Surfaces ─────────────────────────────────────────────── */
+  --bg: #080b0a;
+  --bg-elev: #0c100e;
+  --surface: #10161300;
+  --surface-1: #111815;
+  --surface-2: #161e1a;
+  --border: #1d2a24;
+  --border-bright: #294037;
+
+  /* ── Text ─────────────────────────────────────────────────── */
+  --text: #e9efeb;
+  --text-muted: #9aada3;
+  --text-dim: #6b7d74;
+
+  /* ── Accent (emerald / teal) ──────────────────────────────── */
+  --accent: #2fd9a3;
+  --accent-bright: #5eead4;
+  --accent-deep: #0f7a5c;
+  --accent-soft: rgba(47, 217, 163, 0.12);
+  --accent-softer: rgba(47, 217, 163, 0.06);
+  --accent-line: rgba(47, 217, 163, 0.32);
+  --glow: rgba(47, 217, 163, 0.22);
+
+  /* ── Typography ───────────────────────────────────────────── */
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', 'Fira Code', monospace;
+
+  /* ── Metrics ──────────────────────────────────────────────── */
+  --container: 1080px;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --radius-lg: 22px;
+  --section-pad: clamp(4rem, 9vw, 7.5rem);
+
+  /* ── Shadows ──────────────────────────────────────────────── */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 34px -16px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 0 1px var(--accent-soft), 0 18px 50px -22px var(--glow);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: dark;
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Ambient background: subtle dot grid + radial accent glows */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(900px 600px at 78% -8%, rgba(47, 217, 163, 0.10), transparent 60%),
+    radial-gradient(700px 500px at 8% 12%, rgba(47, 217, 163, 0.05), transparent 55%);
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, #000 30%, transparent 75%);
+  pointer-events: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-bright);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Typography scale ──────────────────────────────────────── */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+}
+
+h3 {
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* ── Layout primitives ─────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 2rem);
+}
+
+.section {
+  padding-block: var(--section-pad);
+  position: relative;
+}
+
+/* Eyebrow / section kicker — "// 01 — section" */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.kicker::before {
+  content: '';
+  width: 1.8rem;
+  height: 1px;
+  background: var(--accent-line);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4.2vw, 2.7rem);
+  margin-bottom: 0.9rem;
+}
+
+.section-intro {
+  max-width: 46ch;
+  color: var(--text-muted);
+  font-size: 1.02rem;
+}
+
+.section-head {
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn {
+  --btn-bg: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 550;
+  line-height: 1;
+  padding: 0.85rem 1.35rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-bright);
+  background: var(--btn-bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease),
+    background 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  white-space: nowrap;
+}
+
+.btn svg {
+  width: 1.05em;
+  height: 1.05em;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-line);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, var(--accent-bright), var(--accent));
+  color: #05130d;
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 14px 34px -14px var(--glow);
+  border-color: transparent;
+}
+
+.btn-ghost:hover {
+  background: var(--accent-softer);
+}
+
+/* ── Chips / tags ──────────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  padding: 0.32rem 0.66rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.chip:hover {
+  color: var(--accent-bright);
+  border-color: var(--accent-line);
+}
+
+/* ── Cards ─────────────────────────────────────────────────── */
+.card {
+  background: linear-gradient(180deg, var(--surface-1), var(--bg-elev));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.card:hover {
+  border-color: var(--border-bright);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Scroll reveal ─────────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Misc ──────────────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, var(--text) 30%, var(--accent-bright));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.accent {
+  color: var(--accent);
+}

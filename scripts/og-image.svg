@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#2fd9a3"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="12%" r="60%">
+      <stop offset="0" stop-color="#2fd9a3" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#2fd9a3" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#ffffff" fill-opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#080b0a"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- monogram badge -->
+  <g transform="translate(90, 96)">
+    <rect width="84" height="84" rx="20" fill="#0c1411" stroke="#294037" stroke-width="2"/>
+    <text x="42" y="57" font-family="'JetBrains Mono', monospace" font-size="38" font-weight="700" text-anchor="middle" fill="url(#accent)">NH</text>
+  </g>
+
+  <!-- availability -->
+  <g transform="translate(200, 124)">
+    <circle cx="9" cy="9" r="6" fill="#2fd9a3"/>
+    <text x="26" y="15" font-family="'JetBrains Mono', monospace" font-size="22" fill="#9aada3">Open to new opportunities</text>
+  </g>
+
+  <!-- name -->
+  <text x="90" y="320" font-family="'Inter', 'Segoe UI', sans-serif" font-size="92" font-weight="700" fill="#e9efeb" letter-spacing="-3">Nassim Hammami</text>
+
+  <!-- role -->
+  <text x="92" y="392" font-family="'JetBrains Mono', monospace" font-size="34" fill="#2fd9a3">&gt; Machine Learning &amp; Computer Vision Engineer</text>
+
+  <!-- tagline -->
+  <text x="92" y="470" font-family="'Inter', sans-serif" font-size="27" fill="#9aada3">Designing, building, and shipping production AI systems</text>
+  <text x="92" y="508" font-family="'Inter', sans-serif" font-size="27" fill="#9aada3">for real-world use.</text>
+
+  <!-- stat chips -->
+  <g font-family="'JetBrains Mono', monospace" font-size="22">
+    <g transform="translate(92, 548)">
+      <rect width="190" height="46" rx="23" fill="#111815" stroke="#1d2a24"/>
+      <text x="22" y="30" fill="#5eead4">4+ yrs</text>
+      <text x="100" y="30" fill="#6b7d74">in prod</text>
+    </g>
+    <g transform="translate(298, 548)">
+      <rect width="230" height="46" rx="23" fill="#111815" stroke="#1d2a24"/>
+      <text x="22" y="30" fill="#5eead4">80+</text>
+      <text x="78" y="30" fill="#6b7d74">projects</text>
+    </g>
+    <g transform="translate(544, 548)">
+      <rect width="300" height="46" rx="23" fill="#111815" stroke="#1d2a24"/>
+      <text x="22" y="30" fill="#5eead4">Top Rated Plus</text>
+      <text x="218" y="30" fill="#6b7d74">Upwork</text>
+    </g>
+  </g>
+
+  <rect x="0" y="0" width="1200" height="6" fill="url(#accent)"/>
+</svg>

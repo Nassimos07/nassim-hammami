@@ -1,0 +1,406 @@
+---
+import { profile } from '../data/profile';
+import { withBase } from '../utils/url';
+import Icon from './Icon.astro';
+---
+
+<section id="top" class="hero section">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="status" data-reveal>
+        <span class="status-dot" aria-hidden="true"></span>
+        {profile.availability}
+      </p>
+
+      <h1 class="hero-name" data-reveal style="--reveal-delay: 60ms">
+        {profile.name}
+      </h1>
+
+      <p class="hero-role mono" data-reveal style="--reveal-delay: 120ms">
+        <span class="prompt">&gt;</span>
+        <span class="role-static">{profile.role.split(' & ')[0]} engineer building</span>
+        <span class="role-rotator" data-rotator aria-live="polite"></span>
+        <span class="caret" aria-hidden="true"></span>
+      </p>
+
+      <p class="hero-tagline" data-reveal style="--reveal-delay: 180ms">
+        {profile.tagline}
+      </p>
+
+      <div class="hero-meta" data-reveal style="--reveal-delay: 220ms">
+        <span class="hero-loc"><Icon name="pin" class="ic" /> {profile.location}</span>
+      </div>
+
+      <div class="hero-actions" data-reveal style="--reveal-delay: 260ms">
+        <a class="btn btn-primary" href="#projects">
+          View Projects <Icon name="arrow" class="ic" />
+        </a>
+        <a
+          class="btn btn-ghost"
+          href={withBase(profile.resumeFile)}
+          target="_blank"
+          rel="noopener"
+        >
+          <Icon name="download" class="ic" /> Download Resume
+        </a>
+      </div>
+
+      <ul class="hero-socials" data-reveal style="--reveal-delay: 320ms">
+        {
+          profile.socials.map((s) => (
+            <li>
+              <a
+                href={s.href}
+                class="social-link"
+                aria-label={s.label}
+                target={s.icon === 'mail' ? undefined : '_blank'}
+                rel="noopener"
+              >
+                <Icon name={s.icon} class="ic" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="hero-terminal" data-reveal style="--reveal-delay: 200ms">
+      <div class="term-bar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span class="term-title mono">nassim@ml ~ engineer.py</span>
+      </div>
+      <pre class="term-body mono"><code><span class="c-kw">class</span> <span class="c-cls">MLEngineer</span>:
+    name = <span class="c-str">"Nassim Hammami"</span>
+    role = <span class="c-str">"ML & Computer Vision"</span>
+    focus = [<span class="c-str">"detection"</span>, <span class="c-str">"tracking"</span>,
+             <span class="c-str">"3D vision"</span>, <span class="c-str">"MLOps"</span>]
+
+    <span class="c-kw">def</span> <span class="c-fn">ship</span>(self, model):
+        model = self.<span class="c-fn">evaluate</span>(model)
+        <span class="c-kw">assert</span> model.ready_for_prod
+        <span class="c-kw">return</span> <span class="c-fn">deploy</span>(model)  <span class="c-cm"># 99% on full clips</span></code></pre>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-cue" aria-label="Scroll to about">
+    <span class="mono">scroll</span>
+    <span class="scroll-track"><span class="scroll-thumb"></span></span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-top: 6rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    width: 100%;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+    padding: 0.4rem 0.85rem;
+    border-radius: 100px;
+    margin-bottom: 1.6rem;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--glow);
+    animation: pulse 2.4s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 var(--glow);
+    }
+    70% {
+      box-shadow: 0 0 0 7px rgba(47, 217, 163, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(47, 217, 163, 0);
+    }
+  }
+
+  .hero-name {
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    line-height: 1.02;
+    margin-bottom: 1.1rem;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-role {
+    font-size: clamp(0.92rem, 2.1vw, 1.12rem);
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4em;
+  }
+
+  .prompt {
+    color: var(--accent);
+  }
+
+  .role-rotator {
+    color: var(--accent-bright);
+    font-weight: 500;
+  }
+
+  .caret {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.05em;
+    background: var(--accent);
+    translate: 0 0.16em;
+    animation: blink 1.1s steps(2, start) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .hero-tagline {
+    font-size: 1.08rem;
+    max-width: 44ch;
+    color: var(--text-muted);
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-meta {
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-loc {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  .ic {
+    width: 1.05em;
+    height: 1.05em;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-socials {
+    display: flex;
+    gap: 0.7rem;
+  }
+
+  .social-link {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+    color: var(--text-muted);
+    transition: color 0.22s var(--ease), border-color 0.22s var(--ease),
+      transform 0.22s var(--ease);
+  }
+
+  .social-link:hover {
+    color: var(--accent-bright);
+    border-color: var(--accent-line);
+    transform: translateY(-3px);
+  }
+
+  /* Terminal card */
+  .hero-terminal {
+    border: 1px solid var(--border-bright);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, #0c1411, #090d0b);
+    box-shadow: var(--shadow-glow);
+    overflow: hidden;
+  }
+
+  .term-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 0.95rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+  .dot-r {
+    background: #ff5f57;
+  }
+  .dot-y {
+    background: #febc2e;
+  }
+  .dot-g {
+    background: #28c840;
+  }
+
+  .term-title {
+    margin-left: 0.6rem;
+    font-size: 0.76rem;
+    color: var(--text-dim);
+  }
+
+  .term-body {
+    margin: 0;
+    padding: 1.25rem 1.4rem;
+    font-size: clamp(0.74rem, 1.5vw, 0.86rem);
+    line-height: 1.75;
+    color: var(--text-muted);
+    overflow-x: auto;
+    tab-size: 2;
+  }
+
+  .c-kw {
+    color: #ff7b9c;
+  }
+  .c-cls {
+    color: var(--accent-bright);
+  }
+  .c-fn {
+    color: #6fb3ff;
+  }
+  .c-str {
+    color: #d6c98a;
+  }
+  .c-cm {
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  /* Scroll cue */
+  .scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 1.8rem;
+    translate: -50% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .scroll-track {
+    width: 22px;
+    height: 34px;
+    border: 1.5px solid var(--border-bright);
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+  }
+
+  .scroll-thumb {
+    width: 3px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--accent);
+    animation: scrollDown 1.8s var(--ease) infinite;
+  }
+
+  @keyframes scrollDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-2px);
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 880px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .hero-terminal {
+      order: 2;
+    }
+    .scroll-cue {
+      display: none;
+    }
+  }
+</style>
+
+<script
+  is:inline
+  define:vars={{ roles: profile.rotatingRoles }}
+>
+  (function () {
+    const el = document.querySelector('[data-rotator]');
+    if (!el) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      el.textContent = roles[0];
+      return;
+    }
+    let i = 0;
+    let char = 0;
+    let deleting = false;
+    function tick() {
+      const word = roles[i];
+      el.textContent = word.slice(0, char);
+      if (!deleting && char < word.length) {
+        char++;
+        setTimeout(tick, 70);
+      } else if (!deleting && char === word.length) {
+        deleting = true;
+        setTimeout(tick, 1500);
+      } else if (deleting && char > 0) {
+        char--;
+        setTimeout(tick, 38);
+      } else {
+        deleting = false;
+        i = (i + 1) % roles.length;
+        setTimeout(tick, 280);
+      }
+    }
+    tick();
+  })();
+</script>

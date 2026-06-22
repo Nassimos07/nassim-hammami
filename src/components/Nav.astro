@@ -1,0 +1,207 @@
+---
+import { profile } from '../data/profile';
+import { withBase } from '../utils/url';
+
+const links = [
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<header class="header" data-header>
+  <div class="container nav">
+    <a href="#top" class="brand" aria-label={`${profile.name} — home`}>
+      <span class="brand-mark mono">{profile.initials}</span>
+      <span class="brand-name">{profile.name}</span>
+    </a>
+
+    <nav class="nav-links" data-nav-menu aria-label="Primary">
+      {
+        links.map((link) => (
+          <a href={link.href} class="nav-link" data-nav-link>
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        class="btn btn-primary nav-cta"
+        href={withBase(profile.resumeFile)}
+        target="_blank"
+        rel="noopener"
+      >
+        Resume
+      </a>
+    </nav>
+
+    <button
+      class="nav-toggle"
+      data-nav-toggle
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    transition: background 0.3s var(--ease), border-color 0.3s var(--ease),
+      backdrop-filter 0.3s var(--ease);
+    border-bottom: 1px solid transparent;
+  }
+
+  .header.is-scrolled {
+    background: rgba(8, 11, 10, 0.72);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-bottom-color: var(--border);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.6rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 600;
+  }
+
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    color: var(--accent-bright);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .brand-name {
+    font-size: 0.98rem;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .nav-link {
+    position: relative;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--radius-sm);
+    transition: color 0.2s var(--ease);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0.85rem;
+    right: 0.85rem;
+    bottom: 0.28rem;
+    height: 1.5px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s var(--ease);
+  }
+
+  .nav-link:hover,
+  .nav-link.is-active {
+    color: var(--text);
+  }
+
+  .nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .nav-cta {
+    margin-left: 0.6rem;
+    padding: 0.6rem 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 2.6rem;
+    height: 2.6rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    width: 18px;
+    height: 1.8px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+  }
+
+  @media (max-width: 760px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-links {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      right: clamp(1.25rem, 5vw, 2rem);
+      left: clamp(1.25rem, 5vw, 2rem);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.2rem;
+      padding: 0.8rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+    }
+
+    .nav-links.is-open {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+
+    .nav-link {
+      padding: 0.7rem 0.85rem;
+    }
+
+    .nav-link::after {
+      display: none;
+    }
+
+    .nav-cta {
+      margin: 0.4rem 0 0;
+      text-align: center;
+    }
+  }
+</style>

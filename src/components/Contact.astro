@@ -1,0 +1,161 @@
+---
+import { profile } from '../data/profile';
+import { withBase } from '../utils/url';
+import Icon from './Icon.astro';
+---
+
+<section id="contact" class="section contact">
+  <div class="container">
+    <div class="contact-card" data-reveal>
+      <div class="contact-glow" aria-hidden="true"></div>
+
+      <p class="kicker mono">// 06 — contact</p>
+      <h2 class="contact-title">
+        Let's build something <span class="gradient-text">that ships.</span>
+      </h2>
+      <p class="contact-lead">
+        I'm {profile.availability.toLowerCase()}. Whether it's a vision pipeline,
+        a model that needs to reach production, or an end-to-end ML build —
+        reach out and let's talk.
+      </p>
+
+      <div class="contact-actions">
+        <a class="btn btn-primary" href={`mailto:${profile.email}`}>
+          <Icon name="mail" class="ic" /> {profile.email}
+        </a>
+        <a
+          class="btn btn-ghost"
+          href={withBase(profile.resumeFile)}
+          target="_blank"
+          rel="noopener"
+        >
+          <Icon name="download" class="ic" /> Resume
+        </a>
+      </div>
+
+      <ul class="contact-socials">
+        {
+          profile.socials
+            .filter((s) => s.icon !== 'mail')
+            .map((s) => (
+              <li>
+                <a
+                  href={s.href}
+                  class="contact-social"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Icon name={s.icon} class="ic" />
+                  <span>{s.label}</span>
+                  <span class="contact-handle mono">{s.handle}</span>
+                </a>
+              </li>
+            ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-bright);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, var(--surface-1), var(--bg-elev));
+    padding: clamp(2.2rem, 6vw, 4rem);
+    text-align: center;
+  }
+
+  .contact-glow {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    translate: -50% 0;
+    width: 120%;
+    height: 80%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(47, 217, 163, 0.16),
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+
+  .kicker {
+    justify-content: center;
+  }
+
+  .contact-title {
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    margin-bottom: 1.1rem;
+    position: relative;
+  }
+
+  .contact-lead {
+    max-width: 48ch;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    position: relative;
+  }
+
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 2.4rem;
+    position: relative;
+  }
+
+  .contact-socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    position: relative;
+  }
+
+  .contact-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1rem 1.5rem;
+    min-width: 9rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--text-muted);
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease),
+      transform 0.2s var(--ease);
+  }
+
+  .contact-social .ic {
+    width: 1.3em;
+    height: 1.3em;
+  }
+
+  .contact-social span:nth-child(2) {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .contact-handle {
+    font-size: 0.74rem;
+    color: var(--text-dim);
+  }
+
+  .contact-social:hover {
+    color: var(--accent-bright);
+    border-color: var(--accent-line);
+    transform: translateY(-3px);
+  }
+
+  .contact-social:hover span:nth-child(2) {
+    color: var(--accent-bright);
+  }
+</style>

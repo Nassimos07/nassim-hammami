@@ -1,0 +1,172 @@
+---
+import { projects } from '../data/projects';
+import Icon from './Icon.astro';
+---
+
+<section id="projects" class="section projects">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="kicker mono">// 03 — projects</p>
+      <h2 class="section-title">Selected work.</h2>
+      <p class="section-intro">
+        Production systems across medical imaging, agriculture, sports, and
+        computer-vision platforms.
+      </p>
+    </div>
+
+    <div class="proj-grid">
+      {
+        projects.map((p, i) => (
+          <article class="proj card" data-reveal style={`--reveal-delay: ${(i % 2) * 90}ms`}>
+            <div class="proj-top">
+              <div class="proj-id">
+                <span class="proj-index mono">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="proj-name">{p.name}</h3>
+                <span class="proj-context mono">{p.context}</span>
+              </div>
+              {p.link && (
+                <a
+                  class="proj-link"
+                  href={p.link.href}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={`Visit ${p.name} (${p.link.label})`}
+                >
+                  <Icon name="external" class="ic" />
+                </a>
+              )}
+            </div>
+
+            <p class="proj-domain mono">{p.domain}</p>
+            <p class="proj-desc">{p.description}</p>
+
+            <ul class="proj-tags">
+              {p.tags.map((tag) => (
+                <li class="chip">{tag}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="proj-foot mono" data-reveal>
+      <span class="accent">+ 80</span> more projects delivered on Upwork across
+      medical imaging, agriculture, sports &amp; finance.
+    </p>
+  </div>
+</section>
+
+<style>
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .proj {
+    padding: 1.7rem 1.7rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .proj::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
+  }
+
+  .proj:hover::after {
+    transform: scaleX(1);
+  }
+
+  .proj-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.7rem;
+  }
+
+  .proj-id {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .proj-index {
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+
+  .proj-name {
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+  }
+
+  .proj-context {
+    font-size: 0.74rem;
+    color: var(--text-dim);
+  }
+
+  .proj-link {
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease),
+      transform 0.2s var(--ease);
+  }
+
+  .proj-link:hover {
+    color: var(--accent-bright);
+    border-color: var(--accent-line);
+    transform: translateY(-2px);
+  }
+
+  .proj-domain {
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+  }
+
+  .proj-desc {
+    font-size: 0.96rem;
+    line-height: 1.66;
+    color: var(--text-muted);
+    margin-bottom: 1.3rem;
+    flex-grow: 1;
+  }
+
+  .proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .proj-foot {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 760px) {
+    .proj-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,211 @@
+---
+import { experiences } from '../data/experience';
+---
+
+<section id="experience" class="section experience">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="kicker mono">// 02 — experience</p>
+      <h2 class="section-title">Where I've shipped.</h2>
+      <p class="section-intro">
+        Four years across research, freelance delivery, and leading production ML.
+      </p>
+    </div>
+
+    <ol class="timeline">
+      {
+        experiences.map((job, i) => (
+          <li class="t-item" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+            <div class="t-marker">
+              <span class={`t-dot ${job.current ? 'is-current' : ''}`} />
+            </div>
+
+            <div class="t-content card">
+              <div class="t-head">
+                <div>
+                  <h3 class="t-role">{job.role}</h3>
+                  <p class="t-company">
+                    <span class="t-company-name">{job.company}</span>
+                    <span class="t-sep">·</span>
+                    <span class="t-loc">{job.location}</span>
+                  </p>
+                </div>
+                <div class="t-when">
+                  <span class="t-dates mono">
+                    {job.start} — {job.end}
+                  </span>
+                  {job.current && <span class="t-badge">Current</span>}
+                </div>
+              </div>
+
+              <p class="t-type mono">{job.type}</p>
+
+              {job.meta && (
+                <ul class="t-meta">
+                  {job.meta.map((m) => (
+                    <li class="chip">{m}</li>
+                  ))}
+                </ul>
+              )}
+
+              <ul class="t-points">
+                {job.highlights.map((h) => (
+                  <li>{h}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  .t-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 1.1rem;
+  }
+
+  .t-marker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .t-marker::before {
+    content: '';
+    position: absolute;
+    top: 0.4rem;
+    bottom: -1.4rem;
+    width: 1.5px;
+    background: linear-gradient(var(--border-bright), transparent);
+  }
+
+  .t-item:last-child .t-marker::before {
+    display: none;
+  }
+
+  .t-dot {
+    position: relative;
+    z-index: 1;
+    width: 13px;
+    height: 13px;
+    margin-top: 0.35rem;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 2px solid var(--border-bright);
+  }
+
+  .t-dot.is-current {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+
+  .t-content {
+    padding: 1.5rem 1.6rem;
+  }
+
+  .t-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .t-role {
+    font-size: 1.18rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .t-company {
+    font-size: 0.94rem;
+    color: var(--text-muted);
+  }
+
+  .t-company-name {
+    color: var(--accent-bright);
+    font-weight: 500;
+  }
+
+  .t-sep {
+    margin: 0 0.4rem;
+    color: var(--text-dim);
+  }
+
+  .t-when {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .t-dates {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .t-badge {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent-line);
+    background: var(--accent-soft);
+    padding: 0.2rem 0.5rem;
+    border-radius: 100px;
+  }
+
+  .t-type {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin: 0.6rem 0 0.9rem;
+  }
+
+  .t-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+  }
+
+  .t-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .t-points li {
+    position: relative;
+    padding-left: 1.3rem;
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .t-points li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 620px) {
+    .t-when {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+</style>

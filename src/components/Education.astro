@@ -1,0 +1,79 @@
+---
+import { education } from '../data/education';
+---
+
+<section id="education" class="section education">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="kicker mono">// 05 — education</p>
+      <h2 class="section-title">Foundations.</h2>
+      <p class="section-intro">
+        A selective engineering track, top national rankings, and research
+        experience in Canada.
+      </p>
+    </div>
+
+    <div class="edu-grid">
+      {
+        education.map((edu, i) => (
+          <article class="edu card" data-reveal style={`--reveal-delay: ${i * 80}ms`}>
+            <span class="edu-period mono">{edu.period}</span>
+            <h3 class="edu-inst">{edu.institution}</h3>
+            <p class="edu-detail">{edu.detail}</p>
+            <p class="edu-desc">{edu.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+
+  .edu {
+    padding: 1.6rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .edu-period {
+    font-size: 0.78rem;
+    color: var(--accent);
+    border: 1px solid var(--accent-line);
+    background: var(--accent-soft);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .edu-inst {
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+  }
+
+  .edu-detail {
+    font-size: 0.86rem;
+    color: var(--accent-bright);
+    font-weight: 500;
+    margin-bottom: 0.9rem;
+  }
+
+  .edu-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 880px) {
+    .edu-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

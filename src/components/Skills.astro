@@ -1,0 +1,126 @@
+---
+import { skillGroups, languages } from '../data/skills';
+---
+
+<section id="skills" class="section skills">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="kicker mono">// 04 — skills</p>
+      <h2 class="section-title">Toolbox.</h2>
+      <p class="section-intro">
+        The stack I reach for to take models from notebook to production.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      {
+        skillGroups.map((group, i) => (
+          <div class="skill-group card" data-reveal style={`--reveal-delay: ${i * 80}ms`}>
+            <h3 class="skill-cat">
+              <span class="skill-cat-mark mono">{String(i + 1).padStart(2, '0')}</span>
+              {group.category}
+            </h3>
+            <ul class="skill-items">
+              {group.items.map((item) => (
+                <li class="chip">{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="languages" data-reveal>
+      <span class="lang-label mono">Languages</span>
+      <ul class="lang-list">
+        {
+          languages.map((lang) => (
+            <li class="lang">
+              <span class="lang-name">{lang.name}</span>
+              <span class="lang-level mono">{lang.level}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .skill-group {
+    padding: 1.5rem 1.6rem;
+  }
+
+  .skill-cat {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 1.05rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .skill-cat-mark {
+    font-size: 0.74rem;
+    color: var(--accent);
+    border: 1px solid var(--accent-line);
+    border-radius: 6px;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .languages {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .lang-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .lang-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .lang {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .lang-name {
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .lang-level {
+    font-size: 0.78rem;
+    color: var(--accent);
+  }
+
+  @media (max-width: 760px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
