@@ -43,9 +43,10 @@
     background:var(--ink);color:#fff !important;
     font-weight:500;font-size:15px;
     padding:10px 26px;border-radius:12px;
-    transition:transform .15s ease;
+    box-shadow:7px 7px 0 #e1e1e1;
+    transition:transform .15s ease,box-shadow .15s ease;
   }
-  .pill:hover{transform:translateY(-2px);}
+  .pill:hover{box-shadow:5px 5px 0 #d7d7d7;transform:translate(2px,2px);}
 
   .project-hero{
     display:grid;grid-template-columns:minmax(0,.95fr) minmax(380px,1fr);
@@ -206,11 +207,10 @@
     </a>
     <div class="nav-links">
       <a href="index.html#work">Work</a>
-      <a href="https://calibrx.io" target="_blank" rel="noopener">CalibrX</a>
       <a href="index.html#services">Services</a>
       <a href="index.html#about">About</a>
       <a href="#" target="_blank" rel="noopener">GitHub</a>
-      <a class="pill" href="#contact">Hire me</a>
+      <a class="pill" href="#contact">Say Hello</a>
     </div>
   </nav>
 

@@ -51,9 +51,10 @@
     background:var(--ink);color:#fff !important;
     font-weight:500;font-size:15px;
     padding:10px 26px;border-radius:12px;
-    transition:transform .15s ease;
+    box-shadow:7px 7px 0 #e1e1e1;
+    transition:transform .15s ease,box-shadow .15s ease;
   }
-  .pill:hover{transform:translateY(-2px);}
+  .pill:hover{box-shadow:5px 5px 0 #d7d7d7;transform:translate(2px,2px);}
   a:focus-visible{outline:3px solid #bbb;outline-offset:3px;border-radius:6px;}
 
   /* ============ HERO ============ */
@@ -83,9 +84,10 @@
     background:var(--ink);color:#fff;text-decoration:none;
     font-weight:500;font-size:16px;
     padding:15px 36px;border-radius:14px;
+    box-shadow:8px 8px 0 #e1e1e1;
     transition:transform .15s ease, box-shadow .15s ease;
   }
-  .cta:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.16);}
+  .cta:hover{box-shadow:6px 6px 0 #d7d7d7;transform:translate(2px,2px);}
   .hero-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
   .consult-link{
     display:inline-flex;align-items:center;
@@ -94,9 +96,10 @@
     min-height:54px;padding:0 24px;
     border:1px solid #cfcfcf;border-radius:14px;
     background:var(--white);
+    box-shadow:8px 8px 0 #e1e1e1;
     transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease;
   }
-  .consult-link:hover{border-color:var(--ink);transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.08);}
+  .consult-link:hover{border-color:var(--ink);box-shadow:6px 6px 0 #d7d7d7;transform:translate(2px,2px);}
   .hero-art{display:flex;justify-content:center;min-height:0;}
   .hero-art svg,
   .hero-art img{width:112%;height:auto;max-height:calc(100vh - var(--footer-h) - 250px);display:block;}
@@ -125,12 +128,13 @@
   .discover:hover{opacity:.6;}
 
   /* ============ SECTIONS BELOW THE FOLD ============ */
-  .section{position:relative;padding:90px 0 0;}
+  .section{position:relative;isolation:isolate;padding:108px 0 0;margin-top:10px;}
   .section::before,
   .about::before{
     content:"";position:absolute;left:0;right:0;top:0;height:1px;
     background:
       linear-gradient(90deg, transparent 0%, #d8d8d8 14%, #9b9b9b 50%, #d8d8d8 86%, transparent 100%);
+    z-index:4;pointer-events:none;
   }
   .section::after,
   .about::after{
@@ -140,7 +144,10 @@
       radial-gradient(circle at 43px 50%, #b8b8b8 0 3px, transparent 3.5px),
       radial-gradient(circle at 55px 50%, #b8b8b8 0 3px, transparent 3.5px);
     background-color:var(--white);
+    z-index:5;pointer-events:none;
   }
+  .section > *,
+  .about > *{position:relative;z-index:1;}
   .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:44px;}
   h2{font-weight:700;font-size:clamp(30px,3vw,40px);letter-spacing:-0.02em;}
   .section-sub{color:var(--gray-text);font-size:18px;margin-top:10px;max-width:56ch;}
@@ -199,25 +206,25 @@
   }
   .card:hover{transform:translateY(-5px);border-color:#d8d8d5;box-shadow:0 20px 45px rgba(0,0,0,.08);}
   .card > *{position:relative;z-index:1;}
-  .card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .card-top{order:5;display:flex;align-items:center;justify-content:flex-start;gap:10px;margin-top:4px;}
   .card-icon{
-    width:40px;height:40px;background:#fff;border-radius:12px;
-    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    display:none;
   }
   .card-icon svg{width:27px;height:27px;}
   .tag{
     font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--gray-text);
     background:#fff;border-radius:100px;padding:4px 9px;white-space:nowrap;
   }
-  .card h3{font-weight:600;font-size:18.5px;line-height:1.1;letter-spacing:-0.01em;}
-  .card p{color:var(--gray-text);font-size:13.5px;line-height:1.34;}
-  .card .discover{margin-top:auto;padding-top:0;align-self:flex-start;font-size:15px;}
+  .card h3{order:1;font-weight:600;font-size:18.5px;line-height:1.1;letter-spacing:-0.01em;}
+  .card p{order:2;color:var(--gray-text);font-size:13.5px;line-height:1.34;}
+  .card .discover{order:4;margin-top:auto;padding-top:0;align-self:flex-start;font-size:15px;}
 
   /* ============ ABOUT ============ */
   .about{
     position:relative;
     display:grid;grid-template-columns:260px 1fr;gap:56px;align-items:center;
-    padding:100px 0 0;
+    isolation:isolate;
+    padding:108px 0 0;margin-top:72px;
   }
   .about-avatar{
     background:var(--gray-card);border-radius:var(--radius);
@@ -227,6 +234,59 @@
   .about-avatar img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);display:block;}
   .about p{color:var(--gray-text);max-width:64ch;font-size:18px;margin-top:16px;}
   .about p strong{color:var(--ink);font-weight:600;}
+
+  /* ============ CONTACT ============ */
+  .contact{
+    position:relative;isolation:isolate;
+    padding:56px 0 0;margin-top:44px;
+  }
+  .contact::before{
+    content:"";position:absolute;left:0;right:0;top:0;height:1px;
+    background:
+      linear-gradient(90deg, transparent 0%, #d8d8d8 14%, #9b9b9b 50%, #d8d8d8 86%, transparent 100%);
+    z-index:4;pointer-events:none;
+  }
+  .contact::after{
+    content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%);
+    width:86px;height:12px;background:
+      radial-gradient(circle at 31px 50%, #b8b8b8 0 3px, transparent 3.5px),
+      radial-gradient(circle at 43px 50%, #b8b8b8 0 3px, transparent 3.5px),
+      radial-gradient(circle at 55px 50%, #b8b8b8 0 3px, transparent 3.5px);
+    background-color:var(--white);
+    z-index:5;pointer-events:none;
+  }
+  .contact > *{position:relative;z-index:1;}
+  .contact-grid{
+    display:grid;grid-template-columns:1fr;gap:18px;align-items:start;
+  }
+  .contact-copy{text-align:center;}
+  .contact-copy h2{
+    color:#7a7a7a;
+    font-family:'Poppins',system-ui,sans-serif;
+    font-size:clamp(21px,1.8vw,27px);
+    font-weight:500;
+    letter-spacing:0;
+  }
+  .contact-copy p{display:none;}
+  .contact-links{
+    display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;
+  }
+  .contact-card{
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    min-height:48px;padding:8px 4px;
+    color:var(--ink);text-decoration:none;
+    transition:opacity .15s ease,transform .15s ease;
+  }
+  .contact-card:hover{opacity:.65;transform:translateY(-3px);}
+  .contact-icon{
+    width:34px;height:34px;border-radius:10px;background:#f5f5f4;
+    display:grid;place-items:center;color:var(--ink);
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.07);
+  }
+  .contact-icon svg{width:20px;height:20px;}
+  .contact-card > span:not(.contact-icon){display:block;}
+  .contact-card strong{display:block;font-size:14px;line-height:1.1;font-weight:600;}
+  .contact-card > span:not(.contact-icon) > span{display:none;}
 
   /* ============ FOOTER ============ */
   footer{
@@ -268,6 +328,7 @@
     .work-grid{grid-template-columns:1fr;}
     .about{grid-template-columns:1fr;gap:32px;}
     .about-avatar{max-width:260px;}
+    .contact-grid{grid-template-columns:1fr;gap:18px;}
     .nav-links a:not(.pill){display:none;}
   }
   @media (max-width:560px){
@@ -277,6 +338,9 @@
     .card::after{left:12px;right:12px;top:12px;bottom:auto;width:auto;height:96px;border-radius:14px;}
     .card-top{align-items:flex-start;}
     .tag{white-space:normal;text-align:right;}
+    .contact-links{gap:14px;}
+    .contact-card{min-height:44px;padding:6px 2px;}
+    .contact-card strong{font-size:13px;}
     .feature{grid-template-columns:1fr;gap:24px;}
     .feature-img{max-width:250px;}
     footer{grid-template-columns:1fr;align-items:flex-start;gap:8px;padding:10px 22px 12px;}
@@ -302,11 +366,10 @@
     </a>
     <div class="nav-links">
       <a href="#work">Work</a>
-      <a href="https://calibrx.io" target="_blank" rel="noopener">CalibrX</a>
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#" target="_blank" rel="noopener">GitHub</a>
-      <a class="pill" href="#contact">Hire me</a>
+      <a class="pill" href="#contact">Say Hello</a>
     </div>
   </nav>
 
@@ -438,7 +501,7 @@
         </div>
         <h3>CalibrX — camera calibration</h3>
         <p>Camera calibration as a service: intrinsics, distortion, and pose measured through an SDK/API flow instead of weeks of research chores</p>
-        <a class="discover" href="https://calibrx.io" target="_blank" rel="noopener">Discover more</a>
+        <a class="discover" href="https://calibrx.io" target="_blank" rel="noopener">Read more</a>
       </article>
 
       <article class="card boveye-card">
@@ -450,7 +513,7 @@
         </div>
         <h3>BovEye — cattle detection</h3>
         <p>4-channel RGBN detection pipeline for aerial livestock monitoring: patch-embedding surgery, calibrated band normalization, and threshold-sweep evaluation dashboards</p>
-        <a class="discover" href="project-boveye.html">Discover more</a>
+        <a class="discover" href="project-boveye.html">Read more</a>
       </article>
 
       <article class="card emgenisys-card">
@@ -462,7 +525,7 @@
         </div>
         <h3>Emgenisys — embryo classification</h3>
         <p>Multi-module system for embryo viability, grading, and sex prediction from time-lapse imaging — custom calibration-aware losses and clinical-grade validation</p>
-        <a class="discover" href="project-emgenisys.html">Discover more</a>
+        <a class="discover" href="project-emgenisys.html">Read more</a>
       </article>
 
       <article class="card satellite-card">
@@ -474,7 +537,7 @@
         </div>
         <h3>Satellite crop segmentation</h3>
         <p>Field-boundary and crop segmentation across 21 agricultural sites from satellite imagery — delivered end-to-end, from dataset construction to model handoff</p>
-        <a class="discover" href="#">Discover more</a>
+        <a class="discover" href="#">Read more</a>
       </article>
 
       <article class="card padel-card">
@@ -486,7 +549,7 @@
         </div>
         <h3>Padel match analytics</h3>
         <p>Player tracking with broadcast-style overlays: frosted-glass label capsules, EMA-smoothed stat connectors, and a real-time HUD rendered frame by frame</p>
-        <a class="discover" href="#">Discover more</a>
+        <a class="discover" href="#">Read more</a>
       </article>
 
     </div>
@@ -503,8 +566,68 @@
     </div>
   </section>
 
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-copy">
+        <h2>Say Hello</h2>
+      </div>
+
+      <div class="contact-links">
+        <a class="contact-card" href="mailto:hello@calibrx.io" aria-label="Email Nassim">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 8l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>
+            <strong>Email</strong>
+            <span>hello@calibrx.io</span>
+          </span>
+        </a>
+
+        <a class="contact-card" href="https://github.com/Nassimos07" target="_blank" rel="noopener" aria-label="Nassim on GitHub">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.05.78 2.13v3.16c0 .3.21.67.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
+            </svg>
+          </span>
+          <span>
+            <strong>GitHub</strong>
+            <span>Code, demos, and project repositories</span>
+          </span>
+        </a>
+
+        <a class="contact-card" href="#" target="_blank" rel="noopener" aria-label="Nassim on Upwork">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.56 7.06c-1.88 0-3.31 1.24-3.94 3.22-.98-1.48-1.73-3.26-2.17-4.75H9.83v5.83c0 1.15-.94 2.09-2.09 2.09s-2.09-.94-2.09-2.09V5.53H3.06v5.84a4.68 4.68 0 0 0 4.67 4.68 4.69 4.69 0 0 0 4.68-4.68v-.98c.51 1.05 1.13 2.12 1.88 3.07l-1.6 7.52h2.65l1.16-5.45c1.01.65 2.18 1.06 3.52 1.06 2.86 0 5.19-2.34 5.19-5.21 0-2.86-2.33-5.32-5.19-5.32h.54zm0 7.87c-1.04 0-2.02-.44-2.91-1.16l.22-.9v-.04c.16-.92.67-2.47 2.24-2.47a2.29 2.29 0 0 1 2.29 2.29c0 1.26-1.03 2.28-2.29 2.28h.45z" transform="translate(-1.5,0)"/>
+            </svg>
+          </span>
+          <span>
+            <strong>Upwork</strong>
+            <span>Top Rated Plus computer vision work</span>
+          </span>
+        </a>
+
+        <a class="contact-card" href="#" target="_blank" rel="noopener" aria-label="Nassim on LinkedIn">
+          <span class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/>
+            </svg>
+          </span>
+          <span>
+            <strong>LinkedIn</strong>
+            <span>Background, updates, and professional notes</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ FOOTER ============ -->
-  <footer id="contact">
+  <footer>
     <div class="socials">
       <a href="https://github.com/Nassimos07" target="_blank" rel="noopener" aria-label="GitHub">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.05.78 2.13v3.16c0 .3.21.67.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
