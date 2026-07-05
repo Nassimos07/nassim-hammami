@@ -170,17 +170,6 @@
   .card p{color:var(--gray-text);font-size:15.5px;}
   .card .discover{margin-top:auto;padding-top:6px;align-self:flex-start;}
 
-  /* ============ CALIBRX BANNER ============ */
-  .banner{
-    margin-top:100px;background:var(--ink);color:#fff;border-radius:28px;
-    padding:64px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;
-  }
-  .banner h2{color:#fff;}
-  .banner p{color:#a9a9a9;max-width:52ch;margin:16px 0 34px;font-size:17.5px;}
-  .banner .cta{background:#fff;color:var(--ink);font-size:17px;padding:16px 36px;}
-  .banner-art{width:180px;height:180px;}
-  .banner-art svg{width:100%;height:100%;}
-
   /* ============ ABOUT ============ */
   .about{
     position:relative;
@@ -234,7 +223,6 @@
     .hero{grid-template-columns:1fr;gap:36px;padding:44px 0 60px;}
     .hero-art{max-width:560px;}
     .work-grid{grid-template-columns:1fr;}
-    .banner{grid-template-columns:1fr;padding:44px 34px;}
     .about{grid-template-columns:1fr;gap:32px;}
     .about-avatar{max-width:260px;}
     .nav-links a:not(.pill){display:none;}
@@ -266,7 +254,7 @@
     </a>
     <div class="nav-links">
       <a href="#work">Work</a>
-      <a href="#calibrx">CalibrX</a>
+      <a href="https://calibrx.io" target="_blank" rel="noopener">CalibrX</a>
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#" target="_blank" rel="noopener">GitHub</a>
@@ -423,6 +411,18 @@
       <article class="card">
         <div class="card-top">
           <div class="card-icon">
+            <svg width="40" height="40" viewBox="0 0 48 48"><circle cx="24" cy="24" r="15" class="doodle-thin"/><circle cx="24" cy="24" r="2.8" fill="#0d0d0d"/><path class="doodle-thin" d="M24 4 v10 M24 34 v10 M4 24 h10 M34 24 h10"/><path class="doodle-thin" d="M13 13 l5 5 M35 13 l-5 5 M13 35 l5-5 M35 35 l-5-5"/></svg>
+          </div>
+          <span class="tag">OpenCV · FastAPI · AWS</span>
+        </div>
+        <h3>CalibrX — camera calibration</h3>
+        <p>Camera calibration as a service: intrinsics, distortion, and pose measured through an SDK/API flow instead of weeks of research chores</p>
+        <a class="discover" href="https://calibrx.io" target="_blank" rel="noopener">Discover more</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div class="card-icon">
             <svg width="40" height="40" viewBox="0 0 48 48"><path class="doodle-thin" d="M12 28 c 0 -7, 7 -12, 13 -10 c 2 -5, 11 -5, 13 0 c 6 -2, 13 3, 13 10 c 0 9, -9 15, -19.5 15 c -10.5 0, -19.5 -6, -19.5 -15 z"/><circle cx="26" cy="30" r="1.8" fill="#0d0d0d"/><circle cx="37" cy="30" r="1.8" fill="#0d0d0d"/><path class="doodle-thin" d="M8 20 l-4 -5 M55 20 l4 -5" transform="translate(-4,0)"/></svg>
           </div>
           <span class="tag">RF-DETR · multispectral</span>
@@ -468,27 +468,6 @@
         <a class="discover" href="#">Discover more</a>
       </article>
 
-    </div>
-  </section>
-
-  <!-- ============ CALIBRX BANNER ============ -->
-  <section class="section" id="calibrx" style="padding-top:0;">
-    <div class="banner">
-      <div>
-        <h2>CalibrX — camera calibration, as a service</h2>
-        <p>An SDK and SaaS platform that turns calibration from a research chore into an API call. Intrinsics, distortion, and pose — measured, not guessed.</p>
-        <a class="cta" href="https://calibrx.io" target="_blank" rel="noopener">Visit calibrx.io</a>
-      </div>
-      <div class="banner-art" aria-hidden="true">
-        <svg viewBox="0 0 170 170">
-          <g stroke="#fff" fill="none" stroke-width="5" stroke-linecap="round">
-            <circle cx="85" cy="85" r="52"/>
-            <circle cx="85" cy="85" r="7" fill="#fff" stroke="none"/>
-            <path d="M85 12 v 30 M85 128 v 30 M12 85 h 30 M128 85 h 30"/>
-            <path d="M46 46 l 12 12 M124 46 l -12 12 M46 124 l 12 -12 M124 124 l -12 -12" stroke-width="3.4" opacity=".6"/>
-          </g>
-        </svg>
-      </div>
     </div>
   </section>
 
