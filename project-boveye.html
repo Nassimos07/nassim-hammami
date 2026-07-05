@@ -98,6 +98,7 @@
     overflow:hidden;
   }
   .vision-panel svg{width:100%;height:100%;}
+  .vision-panel img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block;}
   .doodle{stroke:var(--ink);stroke-width:4.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
   .doodle-thin{stroke:var(--ink);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
   .fill-ink{fill:var(--ink);}
@@ -220,41 +221,8 @@
         </div>
       </div>
 
-      <div class="vision-panel" aria-label="BovEye detection system illustration">
-        <svg viewBox="0 0 560 520" role="img">
-          <defs>
-            <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
-              <path d="M28 0 H0 V28" fill="none" stroke="#d7d7d7" stroke-width="1.2"/>
-            </pattern>
-          </defs>
-          <rect x="44" y="44" width="472" height="344" rx="26" class="fill-paper" stroke="#0d0d0d" stroke-width="5"/>
-          <rect x="66" y="66" width="428" height="240" rx="16" fill="url(#grid)" stroke="#0d0d0d" stroke-width="3"/>
-
-          <g>
-            <rect x="104" y="104" width="92" height="58" rx="10" fill="none" stroke="#0d0d0d" stroke-width="4"/>
-            <rect x="326" y="112" width="106" height="66" rx="10" fill="none" stroke="#0d0d0d" stroke-width="4"/>
-            <rect x="222" y="212" width="118" height="72" rx="10" fill="none" stroke="#0d0d0d" stroke-width="4"/>
-            <path class="doodle-thin" d="M112 134 c 0 -14 14 -22 28 -18 c 5 -9 22 -9 26 1 c 13 -2 24 5 24 18 c 0 15 -17 25 -39 25 c -22 0 -39 -10 -39 -26 z"/>
-            <path class="doodle-thin" d="M336 146 c 0 -16 16 -25 32 -20 c 5 -11 26 -10 31 1 c 14 -2 26 6 26 20 c 0 16 -18 27 -44 27 c -25 0 -45 -11 -45 -28 z"/>
-            <path class="doodle-thin" d="M234 248 c 0 -17 17 -27 34 -22 c 6 -12 28 -11 34 1 c 16 -3 29 7 29 22 c 0 18 -21 30 -49 30 c -27 0 -48 -12 -48 -31 z"/>
-          </g>
-
-          <g class="fill-ink">
-            <rect x="66" y="326" width="120" height="28" rx="8"/>
-            <rect x="204" y="326" width="122" height="28" rx="8"/>
-            <rect x="344" y="326" width="150" height="28" rx="8"/>
-          </g>
-          <text x="82" y="346" font-family="'JetBrains Mono',monospace" font-size="15" fill="#fff">cow 0.97</text>
-          <text x="220" y="346" font-family="'JetBrains Mono',monospace" font-size="15" fill="#fff">RGBN bands</text>
-          <text x="360" y="346" font-family="'JetBrains Mono',monospace" font-size="15" fill="#fff">threshold sweep</text>
-
-          <path class="doodle" d="M102 430 h360"/>
-          <circle cx="162" cy="430" r="11" class="fill-ink"/>
-          <circle cx="282" cy="430" r="11" class="fill-ink"/>
-          <circle cx="402" cy="430" r="11" class="fill-ink"/>
-          <path class="doodle-thin" d="M162 430 v-38 M282 430 v-38 M402 430 v-38"/>
-          <path class="doodle-thin" d="M132 464 h60 M252 464 h60 M372 464 h60"/>
-        </svg>
+      <div class="vision-panel" aria-label="BovEye cattle detection preview">
+        <img src="125.jpg" alt="BovEye cattle detection preview">
       </div>
     </header>
 
