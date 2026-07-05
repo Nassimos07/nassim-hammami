@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BovEye — cattle detection | Nassim Hammami</title>
-<meta name="description" content="Case study: a 4-channel RGBN detection pipeline for aerial livestock monitoring — RF-DETR patch-embedding surgery, calibrated band normalization, and COCO-style threshold-sweep evaluation.">
+<title>Satellite crop segmentation | Nassim Hammami</title>
+<meta name="description" content="Case study: field-boundary and crop segmentation across 21 agricultural sites from satellite imagery — dataset construction, cloud & shadow masking, and end-to-end delivery to model handoff.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,31 +254,31 @@
     <header class="project-hero">
       <div>
         <a class="back-link" href="projects.html">← All projects</a>
-        <p class="eyebrow">AgriTech · Aerial imagery · USA</p>
-        <h1>BovEye — cattle detection</h1>
-        <p class="lede">A <strong>4-channel RGBN detection pipeline</strong> for aerial livestock monitoring — RF-DETR rebuilt for multispectral input, benchmarked against YOLOv11 with COCO-style rigor, and tuned to an operating point backed by evidence.</p>
+        <p class="eyebrow">Remote Sensing · AgriTech</p>
+        <h1>Satellite crop segmentation</h1>
+        <p class="lede">Field-boundary and crop segmentation across <strong>21 agricultural sites</strong> from satellite imagery — delivered end-to-end, from raw scenes and dataset construction through trained models and clean handoff.</p>
         <div class="hero-actions">
           <a class="cta" href="#challenge">Read the case study</a>
         </div>
       </div>
 
-      <div class="vision-panel" aria-label="BovEye cattle detection preview">
-        <img src="boveye-preview.jpg" alt="Aerial multispectral image with cattle detection boxes">
+      <div class="vision-panel" aria-label="Satellite segmentation preview">
+        <img src="satellite-preview.jpg" alt="Satellite scene segmented into land parcels with cloud and shadow masks and confidence scores">
       </div>
     </header>
 
     <section class="meta-strip" aria-label="Project facts">
       <div class="meta-item">
         <p class="meta-label">Role</p>
-        <p class="meta-value">ML Engineer</p>
+        <p class="meta-value">CV Engineer</p>
       </div>
       <div class="meta-item">
-        <p class="meta-label">Client</p>
-        <p class="meta-value">Confidential · USA</p>
+        <p class="meta-label">Scope</p>
+        <p class="meta-value">21 agricultural sites</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Domain</p>
-        <p class="meta-value">AgriTech · Aerial</p>
+        <p class="meta-value">Remote Sensing</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Status</p>
@@ -289,20 +289,20 @@
     <section class="section" id="challenge">
       <div class="section-head">
         <h2>The challenge</h2>
-        <p class="section-copy">Counting cattle from the air sounds simple — until the animals are a few pixels wide, half-hidden by vegetation, and the imagery has <strong>four spectral channels that no pretrained detector expects</strong>.</p>
+        <p class="section-copy">Before any model could learn, the ground truth had to exist. Twenty-one sites, different crops and seasons, and satellite scenes where <strong>clouds and shadows quietly corrupt every mask they touch</strong>.</p>
       </div>
       <div class="challenge-grid">
         <article class="c-card">
-          <h3>Four channels, three-channel models</h3>
-          <p>Pretrained detectors expect RGB. The near-infrared band that carries the strongest livestock signal simply doesn't fit their input layer.</p>
+          <h3>No dataset existed</h3>
+          <p>Labels and masks had to be constructed from raw satellite imagery before segmentation work could even begin.</p>
         </article>
         <article class="c-card">
-          <h3>Small objects, cluttered scenes</h3>
-          <p>At altitude, cattle are tiny targets against vegetation, shadow, and terrain textures that look a lot like cattle.</p>
+          <h3>21 sites, one system</h3>
+          <p>Soils, crops, and seasons vary site to site — a single pipeline had to hold up across all of them.</p>
         </article>
         <article class="c-card">
-          <h3>Operating points, not leaderboard scores</h3>
-          <p>The system needed a confidence threshold the client could trust in the field — chosen with evidence, not picked by feel.</p>
+          <h3>Clouds and shadows lie</h3>
+          <p>Occlusions corrupt training labels silently. They had to be detected and masked with confidence, not ignored.</p>
         </article>
       </div>
     </section>
@@ -310,28 +310,28 @@
     <section class="section" id="approach">
       <div class="section-head">
         <h2>The approach</h2>
-        <p class="section-copy">Preserve the multispectral signal end to end, adapt the architecture instead of throwing away the fourth band, and make every evaluation decision inspectable.</p>
+        <p class="section-copy">Build the dataset, clean the sky out of it, train the segmentation models — and package everything so the client's team could run with it.</p>
       </div>
       <div class="steps">
         <article class="step">
-          <p class="step-num">01 — DATA</p>
-          <h3>Calibrated RGBN pipeline</h3>
-          <p>Built the 4-channel input pipeline with band normalization calibrated per channel, so the near-infrared signal survives preprocessing intact instead of being washed out.</p>
+          <p class="step-num">01 — DATASET</p>
+          <h3>Dataset construction</h3>
+          <p>Built the training corpus from raw satellite imagery across all 21 sites — scene selection, labeling strategy, and quality control.</p>
         </article>
         <article class="step">
-          <p class="step-num">02 — ARCHITECTURE</p>
-          <h3>Patch-embedding surgery</h3>
-          <p>Rebuilt RF-DETR's patch-embedding path to accept 4-channel input natively while preserving the value of its pretrained weights.</p>
+          <p class="step-num">02 — CLEANING</p>
+          <h3>Cloud &amp; shadow masking</h3>
+          <p>Segmented cloud and shadow with per-region confidence scores, so contaminated pixels are excluded from training instead of silently poisoning it.</p>
         </article>
         <article class="step">
-          <p class="step-num">03 — BENCHMARKING</p>
-          <h3>Head-to-head evaluation</h3>
-          <p>Benchmarked RF-DETR against YOLOv11 under identical data splits and transforms, with rigorous COCO-style metrics via pycocotools.</p>
+          <p class="step-num">03 — MODELS</p>
+          <h3>Field &amp; crop segmentation</h3>
+          <p>Trained the segmentation models for field-boundary extraction and crop classification across the full site diversity.</p>
         </article>
         <article class="step">
-          <p class="step-num">04 — DECISION</p>
-          <h3>Threshold-sweep dashboards</h3>
-          <p>Built evaluation dashboards that sweep confidence thresholds and summarize the trade-offs, so the production operating point was selected on evidence.</p>
+          <p class="step-num">04 — DELIVERY</p>
+          <h3>Handoff-ready packaging</h3>
+          <p>Delivered the pipeline end-to-end — documented and packaged for the client team to operate and extend without me in the loop.</p>
         </article>
       </div>
     </section>
@@ -339,20 +339,20 @@
     <section class="section" id="outcomes">
       <div class="section-head">
         <h2>Outcomes</h2>
-        <p class="section-copy">A detection system that speaks the imagery's native language — and an evaluation story the client could act on.</p>
+        <p class="section-copy">From zero dataset to an operating segmentation system, handed off clean.</p>
       </div>
       <div class="outcome-grid">
         <div class="outcome">
-          <strong>4-channel</strong>
-          <span>RGBN input handled natively by the adapted detector</span>
+          <strong>21 sites</strong>
+          <span>covered by a single segmentation pipeline</span>
         </div>
         <div class="outcome">
-          <strong>2 detectors</strong>
-          <span>RF-DETR vs YOLOv11 — benchmarked under identical conditions</span>
+          <strong>End-to-end</strong>
+          <span>dataset construction → training → model handoff</span>
         </div>
         <div class="outcome">
-          <strong>Evidence-based</strong>
-          <span>operating point chosen from threshold-sweep dashboards</span>
+          <strong>Cloud-aware</strong>
+          <span>occlusions masked with confidence scores, not ignored</span>
         </div>
       </div>
     </section>
@@ -366,25 +366,23 @@
         <div class="stack-group">
           <h3>Modeling</h3>
           <div class="stack-list">
-            <span class="tag">RF-DETR</span>
-            <span class="tag">YOLOv11</span>
             <span class="tag">PyTorch</span>
+            <span class="tag">Semantic segmentation</span>
           </div>
         </div>
         <div class="stack-group">
           <h3>Data</h3>
           <div class="stack-list">
-            <span class="tag">Multispectral RGBN</span>
-            <span class="tag">Band normalization</span>
-            <span class="tag">Aerial imagery</span>
+            <span class="tag">Satellite imagery</span>
+            <span class="tag">Dataset construction</span>
+            <span class="tag">Cloud / shadow masking</span>
           </div>
         </div>
         <div class="stack-group">
-          <h3>Evaluation</h3>
+          <h3>Delivery</h3>
           <div class="stack-list">
-            <span class="tag">pycocotools</span>
-            <span class="tag">COCO metrics</span>
-            <span class="tag">Threshold sweeps</span>
+            <span class="tag">Model handoff</span>
+            <span class="tag">Documentation</span>
           </div>
         </div>
       </div>
@@ -392,7 +390,7 @@
       <div class="cta-band">
         <div>
           <h2>Working on something similar?</h2>
-          <p>If your imagery doesn't look like ImageNet — multispectral, aerial, unusual sensors — that's exactly my kind of problem.</p>
+          <p>If your project starts with “we don’t have a dataset yet” — that's a problem I've solved before.</p>
         </div>
         <div class="cta-actions">
           <a class="cta" href="https://calendly.com/nassimhammemiwork/ml-computer-vision-project-call" target="_blank" rel="noopener">Book a free consultation</a>
@@ -401,13 +399,13 @@
       </div>
 
       <nav class="pager" aria-label="More projects">
-        <a href="project-emgenisys.html">
+        <a href="project-crackfinder.html">
           <span class="dir">← Previous project</span>
-          <strong>Emgenisys — embryo classification</strong>
-        </a>
-        <a class="next" href="project-crackfinder.html">
-          <span class="dir">Next project →</span>
           <strong>CrackFinder — equestrian analysis</strong>
+        </a>
+        <a class="next" href="project-padel.html">
+          <span class="dir">Next project →</span>
+          <strong>Padel match analytics</strong>
         </a>
       </nav>
     </section>

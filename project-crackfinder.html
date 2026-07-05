@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BovEye — cattle detection | Nassim Hammami</title>
-<meta name="description" content="Case study: a 4-channel RGBN detection pipeline for aerial livestock monitoring — RF-DETR patch-embedding surgery, calibrated band normalization, and COCO-style threshold-sweep evaluation.">
+<title>CrackFinder — equestrian performance analysis | Nassim Hammami</title>
+<meta name="description" content="Case study: a computer-vision pipeline that quantifies equine performance from ordinary video — SAM3 segmentation, motion recognition, and 3D vision combined into measurable performance signals.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,31 +254,31 @@
     <header class="project-hero">
       <div>
         <a class="back-link" href="projects.html">← All projects</a>
-        <p class="eyebrow">AgriTech · Aerial imagery · USA</p>
-        <h1>BovEye — cattle detection</h1>
-        <p class="lede">A <strong>4-channel RGBN detection pipeline</strong> for aerial livestock monitoring — RF-DETR rebuilt for multispectral input, benchmarked against YOLOv11 with COCO-style rigor, and tuned to an operating point backed by evidence.</p>
+        <p class="eyebrow">Sports Analytics · Switzerland</p>
+        <h1>CrackFinder — equestrian analysis</h1>
+        <p class="lede">A computer-vision pipeline that reads equine performance straight from ordinary video — <strong>segmentation, motion recognition, and 3D vision</strong> combined to quantify what trainers currently judge by eye.</p>
         <div class="hero-actions">
           <a class="cta" href="#challenge">Read the case study</a>
         </div>
       </div>
 
-      <div class="vision-panel" aria-label="BovEye cattle detection preview">
-        <img src="boveye-preview.jpg" alt="Aerial multispectral image with cattle detection boxes">
+      <div class="vision-panel" aria-label="CrackFinder segmentation preview">
+        <img src="crackfinder-preview.jpg" alt="Horse and rider mid-jump with segmentation mask outline">
       </div>
     </header>
 
     <section class="meta-strip" aria-label="Project facts">
       <div class="meta-item">
         <p class="meta-label">Role</p>
-        <p class="meta-value">ML Engineer</p>
+        <p class="meta-value">CV Engineer</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Client</p>
-        <p class="meta-value">Confidential · USA</p>
+        <p class="meta-value">Confidential · Switzerland</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Domain</p>
-        <p class="meta-value">AgriTech · Aerial</p>
+        <p class="meta-value">Sports Analytics</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Status</p>
@@ -289,20 +289,20 @@
     <section class="section" id="challenge">
       <div class="section-head">
         <h2>The challenge</h2>
-        <p class="section-copy">Counting cattle from the air sounds simple — until the animals are a few pixels wide, half-hidden by vegetation, and the imagery has <strong>four spectral channels that no pretrained detector expects</strong>.</p>
+        <p class="section-copy">Equestrian performance is scored by expert eyes — subjective, inconsistent, and impossible to compare across horses and sessions. The only available signal was <strong>ordinary video shot in busy arenas</strong>.</p>
       </div>
       <div class="challenge-grid">
         <article class="c-card">
-          <h3>Four channels, three-channel models</h3>
-          <p>Pretrained detectors expect RGB. The near-infrared band that carries the strongest livestock signal simply doesn't fit their input layer.</p>
+          <h3>A deformable, two-body subject</h3>
+          <p>Horse and rider move as one articulated mass. Masks have to separate them cleanly from rails, jumps, and crowded backgrounds.</p>
         </article>
         <article class="c-card">
-          <h3>Small objects, cluttered scenes</h3>
-          <p>At altitude, cattle are tiny targets against vegetation, shadow, and terrain textures that look a lot like cattle.</p>
+          <h3>Judgment locked in expert eyes</h3>
+          <p>Performance had to become measurable — signals that are consistent across horses, sessions, and camera setups.</p>
         </article>
         <article class="c-card">
-          <h3>Operating points, not leaderboard scores</h3>
-          <p>The system needed a confidence threshold the client could trust in the field — chosen with evidence, not picked by feel.</p>
+          <h3>Footage from the wild</h3>
+          <p>Variable arenas, lighting, and camera placements — no studio conditions, no sensors on the horse.</p>
         </article>
       </div>
     </section>
@@ -310,28 +310,28 @@
     <section class="section" id="approach">
       <div class="section-head">
         <h2>The approach</h2>
-        <p class="section-copy">Preserve the multispectral signal end to end, adapt the architecture instead of throwing away the fourth band, and make every evaluation decision inspectable.</p>
+        <p class="section-copy">Extract pixel-perfect subjects first, understand their motion second, ground it in 3D geometry third — then turn all of it into performance signals.</p>
       </div>
       <div class="steps">
         <article class="step">
-          <p class="step-num">01 — DATA</p>
-          <h3>Calibrated RGBN pipeline</h3>
-          <p>Built the 4-channel input pipeline with band normalization calibrated per channel, so the near-infrared signal survives preprocessing intact instead of being washed out.</p>
+          <p class="step-num">01 — SEGMENTATION</p>
+          <h3>SAM3 horse-and-rider masks</h3>
+          <p>Built the segmentation layer on SAM3 to produce pixel-accurate horse-and-rider masks that stay robust through motion blur and arena clutter.</p>
         </article>
         <article class="step">
-          <p class="step-num">02 — ARCHITECTURE</p>
-          <h3>Patch-embedding surgery</h3>
-          <p>Rebuilt RF-DETR's patch-embedding path to accept 4-channel input natively while preserving the value of its pretrained weights.</p>
+          <p class="step-num">02 — MOTION</p>
+          <h3>Motion recognition</h3>
+          <p>Modeled the mask sequences over time to recognize and index the movements that matter in performance review.</p>
         </article>
         <article class="step">
-          <p class="step-num">03 — BENCHMARKING</p>
-          <h3>Head-to-head evaluation</h3>
-          <p>Benchmarked RF-DETR against YOLOv11 under identical data splits and transforms, with rigorous COCO-style metrics via pycocotools.</p>
+          <p class="step-num">03 — GEOMETRY</p>
+          <h3>3D vision layer</h3>
+          <p>Lifted 2D signals toward 3D geometry so measurements stay comparable across different camera placements and arenas.</p>
         </article>
         <article class="step">
-          <p class="step-num">04 — DECISION</p>
-          <h3>Threshold-sweep dashboards</h3>
-          <p>Built evaluation dashboards that sweep confidence thresholds and summarize the trade-offs, so the production operating point was selected on evidence.</p>
+          <p class="step-num">04 — SIGNALS</p>
+          <h3>Performance extraction</h3>
+          <p>Aggregated segmentation, motion, and geometry into performance signals designed to feed analysis and prediction.</p>
         </article>
       </div>
     </section>
@@ -339,20 +339,20 @@
     <section class="section" id="outcomes">
       <div class="section-head">
         <h2>Outcomes</h2>
-        <p class="section-copy">A detection system that speaks the imagery's native language — and an evaluation story the client could act on.</p>
+        <p class="section-copy">Expert judgment, translated into signals a model can learn from — using nothing but the video that already exists.</p>
       </div>
       <div class="outcome-grid">
         <div class="outcome">
-          <strong>4-channel</strong>
-          <span>RGBN input handled natively by the adapted detector</span>
+          <strong>Pixel-level</strong>
+          <span>SAM3 masks of horse and rider in cluttered arenas</span>
         </div>
         <div class="outcome">
-          <strong>2 detectors</strong>
-          <span>RF-DETR vs YOLOv11 — benchmarked under identical conditions</span>
+          <strong>Video-only</strong>
+          <span>no sensors, no rigs — ordinary footage in, signals out</span>
         </div>
         <div class="outcome">
-          <strong>Evidence-based</strong>
-          <span>operating point chosen from threshold-sweep dashboards</span>
+          <strong>Prediction-ready</strong>
+          <span>performance signals built to feed downstream models</span>
         </div>
       </div>
     </section>
@@ -360,31 +360,28 @@
     <section class="section" id="stack">
       <div class="section-head">
         <h2>Tech stack</h2>
-        <p class="section-copy">The tools behind each layer of the system.</p>
+        <p class="section-copy">The tools behind each layer of the pipeline.</p>
       </div>
       <div class="stack-groups">
         <div class="stack-group">
-          <h3>Modeling</h3>
+          <h3>Segmentation</h3>
           <div class="stack-list">
-            <span class="tag">RF-DETR</span>
-            <span class="tag">YOLOv11</span>
+            <span class="tag">SAM3</span>
             <span class="tag">PyTorch</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h3>Understanding</h3>
+          <div class="stack-list">
+            <span class="tag">Motion recognition</span>
+            <span class="tag">3D vision</span>
           </div>
         </div>
         <div class="stack-group">
           <h3>Data</h3>
           <div class="stack-list">
-            <span class="tag">Multispectral RGBN</span>
-            <span class="tag">Band normalization</span>
-            <span class="tag">Aerial imagery</span>
-          </div>
-        </div>
-        <div class="stack-group">
-          <h3>Evaluation</h3>
-          <div class="stack-list">
-            <span class="tag">pycocotools</span>
-            <span class="tag">COCO metrics</span>
-            <span class="tag">Threshold sweeps</span>
+            <span class="tag">Video pipelines</span>
+            <span class="tag">Python</span>
           </div>
         </div>
       </div>
@@ -392,7 +389,7 @@
       <div class="cta-band">
         <div>
           <h2>Working on something similar?</h2>
-          <p>If your imagery doesn't look like ImageNet — multispectral, aerial, unusual sensors — that's exactly my kind of problem.</p>
+          <p>If you need expert judgment turned into measurable signals — from video alone — let's talk.</p>
         </div>
         <div class="cta-actions">
           <a class="cta" href="https://calendly.com/nassimhammemiwork/ml-computer-vision-project-call" target="_blank" rel="noopener">Book a free consultation</a>
@@ -401,13 +398,13 @@
       </div>
 
       <nav class="pager" aria-label="More projects">
-        <a href="project-emgenisys.html">
+        <a href="project-boveye.html">
           <span class="dir">← Previous project</span>
-          <strong>Emgenisys — embryo classification</strong>
+          <strong>BovEye — cattle detection</strong>
         </a>
-        <a class="next" href="project-crackfinder.html">
+        <a class="next" href="project-satellite.html">
           <span class="dir">Next project →</span>
-          <strong>CrackFinder — equestrian analysis</strong>
+          <strong>Satellite crop segmentation</strong>
         </a>
       </nav>
     </section>

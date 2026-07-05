@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BovEye — cattle detection | Nassim Hammami</title>
-<meta name="description" content="Case study: a 4-channel RGBN detection pipeline for aerial livestock monitoring — RF-DETR patch-embedding surgery, calibrated band normalization, and COCO-style threshold-sweep evaluation.">
+<title>CalibrX — camera calibration platform | Nassim Hammami</title>
+<meta name="description" content="Case study: CalibrX turns camera calibration into a guided online workflow — intrinsics, distortion, and pose through an SDK/API flow. OpenCV core, FastAPI service, Docker on AWS. Live at calibrx.io.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,55 +254,56 @@
     <header class="project-hero">
       <div>
         <a class="back-link" href="projects.html">← All projects</a>
-        <p class="eyebrow">AgriTech · Aerial imagery · USA</p>
-        <h1>BovEye — cattle detection</h1>
-        <p class="lede">A <strong>4-channel RGBN detection pipeline</strong> for aerial livestock monitoring — RF-DETR rebuilt for multispectral input, benchmarked against YOLOv11 with COCO-style rigor, and tuned to an operating point backed by evidence.</p>
+        <p class="eyebrow">Computer Vision Platform · Own product</p>
+        <h1>CalibrX — camera calibration</h1>
+        <p class="lede">Camera calibration is the unglamorous gate in front of every serious vision system. CalibrX turns it into a <strong>guided online workflow</strong> — intrinsics, distortion, and pose measured through an SDK/API flow instead of weeks of research chores.</p>
         <div class="hero-actions">
-          <a class="cta" href="#challenge">Read the case study</a>
+          <a class="cta" href="https://calibrx.io" target="_blank" rel="noopener">Visit calibrx.io</a>
+          <a class="ghost" href="#challenge">Read the case study</a>
         </div>
       </div>
 
-      <div class="vision-panel" aria-label="BovEye cattle detection preview">
-        <img src="boveye-preview.jpg" alt="Aerial multispectral image with cattle detection boxes">
+      <div class="vision-panel" aria-label="CalibrX calibration workflow">
+        <img src="calibrx-preview.jpg" alt="CalibrX guided calibration workflow — project setup step">
       </div>
     </header>
 
     <section class="meta-strip" aria-label="Project facts">
       <div class="meta-item">
         <p class="meta-label">Role</p>
-        <p class="meta-value">ML Engineer</p>
+        <p class="meta-value">Founder &amp; Engineer</p>
       </div>
       <div class="meta-item">
-        <p class="meta-label">Client</p>
-        <p class="meta-value">Confidential · USA</p>
+        <p class="meta-label">Type</p>
+        <p class="meta-value">Own product</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Domain</p>
-        <p class="meta-value">AgriTech · Aerial</p>
+        <p class="meta-value">CV Infrastructure</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Status</p>
-        <p class="meta-value">Delivered</p>
+        <p class="meta-value">Live · calibrx.io</p>
       </div>
     </section>
 
     <section class="section" id="challenge">
       <div class="section-head">
         <h2>The challenge</h2>
-        <p class="section-copy">Counting cattle from the air sounds simple — until the animals are a few pixels wide, half-hidden by vegetation, and the imagery has <strong>four spectral channels that no pretrained detector expects</strong>.</p>
+        <p class="section-copy">Every computer-vision project needs calibration before its measurements mean anything — yet almost every team <strong>rebuilds it from scratch, badly, under deadline</strong>.</p>
       </div>
       <div class="challenge-grid">
         <article class="c-card">
-          <h3>Four channels, three-channel models</h3>
-          <p>Pretrained detectors expect RGB. The near-infrared band that carries the strongest livestock signal simply doesn't fit their input layer.</p>
+          <h3>Everyone rebuilds it</h3>
+          <p>Calibration is a prerequisite, not a differentiator. Teams burn weeks on patterns, capture protocols, and edge cases they never wanted to own.</p>
         </article>
         <article class="c-card">
-          <h3>Small objects, cluttered scenes</h3>
-          <p>At altitude, cattle are tiny targets against vegetation, shadow, and terrain textures that look a lot like cattle.</p>
+          <h3>Expertise bottleneck</h3>
+          <p>Getting intrinsics and distortion right takes camera-geometry experience most product teams don't keep in-house.</p>
         </article>
         <article class="c-card">
-          <h3>Operating points, not leaderboard scores</h3>
-          <p>The system needed a confidence threshold the client could trust in the field — chosen with evidence, not picked by feel.</p>
+          <h3>From notebook to product</h3>
+          <p>A one-off calibration script is easy. A reliable service with validation, repeatable runs, and clean exports is a different engineering problem.</p>
         </article>
       </div>
     </section>
@@ -310,28 +311,28 @@
     <section class="section" id="approach">
       <div class="section-head">
         <h2>The approach</h2>
-        <p class="section-copy">Preserve the multispectral signal end to end, adapt the architecture instead of throwing away the fourth band, and make every evaluation decision inspectable.</p>
+        <p class="section-copy">Designed and built end to end — from the geometry core to the cloud deployment — as a product, not a script.</p>
       </div>
       <div class="steps">
         <article class="step">
-          <p class="step-num">01 — DATA</p>
-          <h3>Calibrated RGBN pipeline</h3>
-          <p>Built the 4-channel input pipeline with band normalization calibrated per channel, so the near-infrared signal survives preprocessing intact instead of being washed out.</p>
+          <p class="step-num">01 — CORE</p>
+          <h3>Computer-vision engine</h3>
+          <p>Built the calibration core on OpenCV: intrinsics, distortion coefficients, pose estimation, undistortion and rectification — the math every downstream feature depends on.</p>
         </article>
         <article class="step">
-          <p class="step-num">02 — ARCHITECTURE</p>
-          <h3>Patch-embedding surgery</h3>
-          <p>Rebuilt RF-DETR's patch-embedding path to accept 4-channel input natively while preserving the value of its pretrained weights.</p>
+          <p class="step-num">02 — WORKFLOW</p>
+          <h3>Guided 8-step flow</h3>
+          <p>Project setup, image upload, pattern type, parameters, validation, calibration, undistortion, rectification — each step validated before the next, so users can't silently produce garbage.</p>
         </article>
         <article class="step">
-          <p class="step-num">03 — BENCHMARKING</p>
-          <h3>Head-to-head evaluation</h3>
-          <p>Benchmarked RF-DETR against YOLOv11 under identical data splits and transforms, with rigorous COCO-style metrics via pycocotools.</p>
+          <p class="step-num">03 — SERVICE</p>
+          <h3>API-first productization</h3>
+          <p>Wrapped the core in a FastAPI service so calibration runs through an SDK/API flow just as easily as through the guided UI.</p>
         </article>
         <article class="step">
-          <p class="step-num">04 — DECISION</p>
-          <h3>Threshold-sweep dashboards</h3>
-          <p>Built evaluation dashboards that sweep confidence thresholds and summarize the trade-offs, so the production operating point was selected on evidence.</p>
+          <p class="step-num">04 — INFRASTRUCTURE</p>
+          <h3>Cloud deployment</h3>
+          <p>Containerized with Docker and deployed on AWS — sized for repeatable production runs, not demo traffic.</p>
         </article>
       </div>
     </section>
@@ -339,20 +340,20 @@
     <section class="section" id="outcomes">
       <div class="section-head">
         <h2>Outcomes</h2>
-        <p class="section-copy">A detection system that speaks the imagery's native language — and an evaluation story the client could act on.</p>
+        <p class="section-copy">A live product that compresses a research chore into a guided workflow.</p>
       </div>
       <div class="outcome-grid">
         <div class="outcome">
-          <strong>4-channel</strong>
-          <span>RGBN input handled natively by the adapted detector</span>
+          <strong>Live</strong>
+          <span>shipping in production at calibrx.io</span>
         </div>
         <div class="outcome">
-          <strong>2 detectors</strong>
-          <span>RF-DETR vs YOLOv11 — benchmarked under identical conditions</span>
+          <strong>8 steps</strong>
+          <span>guided workflow from project setup to rectified output</span>
         </div>
         <div class="outcome">
-          <strong>Evidence-based</strong>
-          <span>operating point chosen from threshold-sweep dashboards</span>
+          <strong>API-first</strong>
+          <span>every calibration available through the SDK/API flow</span>
         </div>
       </div>
     </section>
@@ -360,54 +361,52 @@
     <section class="section" id="stack">
       <div class="section-head">
         <h2>Tech stack</h2>
-        <p class="section-copy">The tools behind each layer of the system.</p>
+        <p class="section-copy">The tools behind each layer of the platform.</p>
       </div>
       <div class="stack-groups">
         <div class="stack-group">
-          <h3>Modeling</h3>
+          <h3>Core</h3>
           <div class="stack-list">
-            <span class="tag">RF-DETR</span>
-            <span class="tag">YOLOv11</span>
-            <span class="tag">PyTorch</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">Python</span>
+            <span class="tag">Camera geometry</span>
           </div>
         </div>
         <div class="stack-group">
-          <h3>Data</h3>
+          <h3>Service</h3>
           <div class="stack-list">
-            <span class="tag">Multispectral RGBN</span>
-            <span class="tag">Band normalization</span>
-            <span class="tag">Aerial imagery</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">SDK / API design</span>
           </div>
         </div>
         <div class="stack-group">
-          <h3>Evaluation</h3>
+          <h3>Infrastructure</h3>
           <div class="stack-list">
-            <span class="tag">pycocotools</span>
-            <span class="tag">COCO metrics</span>
-            <span class="tag">Threshold sweeps</span>
+            <span class="tag">Docker</span>
+            <span class="tag">AWS</span>
           </div>
         </div>
       </div>
 
       <div class="cta-band">
         <div>
-          <h2>Working on something similar?</h2>
-          <p>If your imagery doesn't look like ImageNet — multispectral, aerial, unusual sensors — that's exactly my kind of problem.</p>
+          <h2>Need calibration handled?</h2>
+          <p>Try the platform at calibrx.io — or talk to me about the vision system behind it.</p>
         </div>
         <div class="cta-actions">
-          <a class="cta" href="https://calendly.com/nassimhammemiwork/ml-computer-vision-project-call" target="_blank" rel="noopener">Book a free consultation</a>
-          <a class="ghost" href="mailto:hello@calibrx.io">Email me</a>
+          <a class="cta" href="https://calibrx.io" target="_blank" rel="noopener">Visit calibrx.io</a>
+          <a class="ghost" href="https://calendly.com/nassimhammemiwork/ml-computer-vision-project-call" target="_blank" rel="noopener">Book a call</a>
         </div>
       </div>
 
       <nav class="pager" aria-label="More projects">
-        <a href="project-emgenisys.html">
+        <a href="project-padel.html">
           <span class="dir">← Previous project</span>
-          <strong>Emgenisys — embryo classification</strong>
+          <strong>Padel match analytics</strong>
         </a>
-        <a class="next" href="project-crackfinder.html">
+        <a class="next" href="project-emgenisys.html">
           <span class="dir">Next project →</span>
-          <strong>CrackFinder — equestrian analysis</strong>
+          <strong>Emgenisys — embryo classification</strong>
         </a>
       </nav>
     </section>

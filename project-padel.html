@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BovEye — cattle detection | Nassim Hammami</title>
-<meta name="description" content="Case study: a 4-channel RGBN detection pipeline for aerial livestock monitoring — RF-DETR patch-embedding surgery, calibrated band normalization, and COCO-style threshold-sweep evaluation.">
+<title>Padel match analytics | Nassim Hammami</title>
+<meta name="description" content="Case study: real-time padel player tracking with broadcast-style overlays — per-player distance, speed, and work rate, EMA-smoothed stats, and a frame-by-frame HUD with court-space mapping.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,31 +254,31 @@
     <header class="project-hero">
       <div>
         <a class="back-link" href="projects.html">← All projects</a>
-        <p class="eyebrow">AgriTech · Aerial imagery · USA</p>
-        <h1>BovEye — cattle detection</h1>
-        <p class="lede">A <strong>4-channel RGBN detection pipeline</strong> for aerial livestock monitoring — RF-DETR rebuilt for multispectral input, benchmarked against YOLOv11 with COCO-style rigor, and tuned to an operating point backed by evidence.</p>
+        <p class="eyebrow">Sports Analytics · Broadcast</p>
+        <h1>Padel match analytics</h1>
+        <p class="lede">Player tracking with <strong>broadcast-style overlays</strong> — per-player distance, speed, and work rate computed live, smoothed to broadcast quality, and rendered frame by frame into a clean, watchable HUD.</p>
         <div class="hero-actions">
           <a class="cta" href="#challenge">Read the case study</a>
         </div>
       </div>
 
-      <div class="vision-panel" aria-label="BovEye cattle detection preview">
-        <img src="boveye-preview.jpg" alt="Aerial multispectral image with cattle detection boxes">
+      <div class="vision-panel" aria-label="Padel match analytics preview">
+        <img src="padel-preview.jpg" alt="Padel court with four tracked players, speed labels, and broadcast overlay">
       </div>
     </header>
 
     <section class="meta-strip" aria-label="Project facts">
       <div class="meta-item">
         <p class="meta-label">Role</p>
-        <p class="meta-value">ML Engineer</p>
+        <p class="meta-value">CV Engineer</p>
       </div>
       <div class="meta-item">
-        <p class="meta-label">Client</p>
-        <p class="meta-value">Confidential · USA</p>
+        <p class="meta-label">Type</p>
+        <p class="meta-value">Broadcast analytics</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Domain</p>
-        <p class="meta-value">AgriTech · Aerial</p>
+        <p class="meta-value">Sports Analytics</p>
       </div>
       <div class="meta-item">
         <p class="meta-label">Status</p>
@@ -289,20 +289,20 @@
     <section class="section" id="challenge">
       <div class="section-head">
         <h2>The challenge</h2>
-        <p class="section-copy">Counting cattle from the air sounds simple — until the animals are a few pixels wide, half-hidden by vegetation, and the imagery has <strong>four spectral channels that no pretrained detector expects</strong>.</p>
+        <p class="section-copy">Four players in a glass box, moving fast and crossing constantly. The output couldn't just be correct — it had to <strong>look broadcast-grade while being computed in real time</strong>.</p>
       </div>
       <div class="challenge-grid">
         <article class="c-card">
-          <h3>Four channels, three-channel models</h3>
-          <p>Pretrained detectors expect RGB. The near-infrared band that carries the strongest livestock signal simply doesn't fit their input layer.</p>
+          <h3>Four players, one enclosure</h3>
+          <p>Glass walls, reflections, and fast crossovers make identity swaps the default failure mode for trackers.</p>
         </article>
         <article class="c-card">
-          <h3>Small objects, cluttered scenes</h3>
-          <p>At altitude, cattle are tiny targets against vegetation, shadow, and terrain textures that look a lot like cattle.</p>
+          <h3>Raw stats jitter</h3>
+          <p>Per-frame speed and distance estimates are noisy. Broadcast numbers have to move like they were measured, not guessed.</p>
         </article>
         <article class="c-card">
-          <h3>Operating points, not leaderboard scores</h3>
-          <p>The system needed a confidence threshold the client could trust in the field — chosen with evidence, not picked by feel.</p>
+          <h3>Broadcast-grade rendering</h3>
+          <p>Overlays, capsules, and connectors have to be rendered frame by frame without cooking the frame rate.</p>
         </article>
       </div>
     </section>
@@ -310,28 +310,28 @@
     <section class="section" id="approach">
       <div class="section-head">
         <h2>The approach</h2>
-        <p class="section-copy">Preserve the multispectral signal end to end, adapt the architecture instead of throwing away the fourth band, and make every evaluation decision inspectable.</p>
+        <p class="section-copy">Track first, measure second, render last — with smoothing between every stage so the final HUD reads like a broadcast product.</p>
       </div>
       <div class="steps">
         <article class="step">
-          <p class="step-num">01 — DATA</p>
-          <h3>Calibrated RGBN pipeline</h3>
-          <p>Built the 4-channel input pipeline with band normalization calibrated per channel, so the near-infrared signal survives preprocessing intact instead of being washed out.</p>
+          <p class="step-num">01 — TRACKING</p>
+          <h3>Player detection &amp; tracking</h3>
+          <p>Per-player tracking that holds identity through occlusions and crossovers — the foundation every stat depends on.</p>
         </article>
         <article class="step">
-          <p class="step-num">02 — ARCHITECTURE</p>
-          <h3>Patch-embedding surgery</h3>
-          <p>Rebuilt RF-DETR's patch-embedding path to accept 4-channel input natively while preserving the value of its pretrained weights.</p>
+          <p class="step-num">02 — ANALYTICS</p>
+          <h3>Physical stats engine</h3>
+          <p>Computed distance covered, average speed, and work rate per player, with EMA smoothing so the readouts stay stable on screen.</p>
         </article>
         <article class="step">
-          <p class="step-num">03 — BENCHMARKING</p>
-          <h3>Head-to-head evaluation</h3>
-          <p>Benchmarked RF-DETR against YOLOv11 under identical data splits and transforms, with rigorous COCO-style metrics via pycocotools.</p>
+          <p class="step-num">03 — RENDERING</p>
+          <h3>Broadcast HUD</h3>
+          <p>Frosted-glass label capsules, EMA-smoothed stat connectors, and per-player speed badges — rendered frame by frame into the video.</p>
         </article>
         <article class="step">
-          <p class="step-num">04 — DECISION</p>
-          <h3>Threshold-sweep dashboards</h3>
-          <p>Built evaluation dashboards that sweep confidence thresholds and summarize the trade-offs, so the production operating point was selected on evidence.</p>
+          <p class="step-num">04 — TACTICS</p>
+          <h3>Court-space mapping</h3>
+          <p>Projected player positions to a top-down court map with positional heat — the tactical view coaches actually read.</p>
         </article>
       </div>
     </section>
@@ -339,20 +339,20 @@
     <section class="section" id="outcomes">
       <div class="section-head">
         <h2>Outcomes</h2>
-        <p class="section-copy">A detection system that speaks the imagery's native language — and an evaluation story the client could act on.</p>
+        <p class="section-copy">A watchable analytics layer: accurate underneath, broadcast-clean on top.</p>
       </div>
       <div class="outcome-grid">
         <div class="outcome">
-          <strong>4-channel</strong>
-          <span>RGBN input handled natively by the adapted detector</span>
+          <strong>Real-time</strong>
+          <span>HUD rendered frame by frame over live footage</span>
         </div>
         <div class="outcome">
-          <strong>2 detectors</strong>
-          <span>RF-DETR vs YOLOv11 — benchmarked under identical conditions</span>
+          <strong>4 players</strong>
+          <span>tracked with stable identities through crossovers</span>
         </div>
         <div class="outcome">
-          <strong>Evidence-based</strong>
-          <span>operating point chosen from threshold-sweep dashboards</span>
+          <strong>Court-space</strong>
+          <span>top-down positional mapping with zone heat</span>
         </div>
       </div>
     </section>
@@ -364,27 +364,27 @@
       </div>
       <div class="stack-groups">
         <div class="stack-group">
-          <h3>Modeling</h3>
+          <h3>Perception</h3>
           <div class="stack-list">
-            <span class="tag">RF-DETR</span>
-            <span class="tag">YOLOv11</span>
+            <span class="tag">Detection</span>
+            <span class="tag">Multi-object tracking</span>
             <span class="tag">PyTorch</span>
           </div>
         </div>
         <div class="stack-group">
-          <h3>Data</h3>
+          <h3>Analytics</h3>
           <div class="stack-list">
-            <span class="tag">Multispectral RGBN</span>
-            <span class="tag">Band normalization</span>
-            <span class="tag">Aerial imagery</span>
+            <span class="tag">EMA smoothing</span>
+            <span class="tag">Physical stats</span>
+            <span class="tag">Court homography</span>
           </div>
         </div>
         <div class="stack-group">
-          <h3>Evaluation</h3>
+          <h3>Rendering</h3>
           <div class="stack-list">
-            <span class="tag">pycocotools</span>
-            <span class="tag">COCO metrics</span>
-            <span class="tag">Threshold sweeps</span>
+            <span class="tag">Broadcast overlays</span>
+            <span class="tag">Real-time HUD</span>
+            <span class="tag">OpenCV</span>
           </div>
         </div>
       </div>
@@ -392,7 +392,7 @@
       <div class="cta-band">
         <div>
           <h2>Working on something similar?</h2>
-          <p>If your imagery doesn't look like ImageNet — multispectral, aerial, unusual sensors — that's exactly my kind of problem.</p>
+          <p>If you need tracking that holds up on fast, chaotic footage — and output people actually want to watch — let's talk.</p>
         </div>
         <div class="cta-actions">
           <a class="cta" href="https://calendly.com/nassimhammemiwork/ml-computer-vision-project-call" target="_blank" rel="noopener">Book a free consultation</a>
@@ -401,13 +401,13 @@
       </div>
 
       <nav class="pager" aria-label="More projects">
-        <a href="project-emgenisys.html">
+        <a href="project-satellite.html">
           <span class="dir">← Previous project</span>
-          <strong>Emgenisys — embryo classification</strong>
+          <strong>Satellite crop segmentation</strong>
         </a>
-        <a class="next" href="project-crackfinder.html">
+        <a class="next" href="project-calibrx.html">
           <span class="dir">Next project →</span>
-          <strong>CrackFinder — equestrian analysis</strong>
+          <strong>CalibrX — camera calibration</strong>
         </a>
       </nav>
     </section>
