@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>All projects | Nassim Hammami</title>
 <meta name="description" content="A gallery of Nassim Hammami's computer-vision and machine-learning projects across medical imaging, agriculture, remote sensing, and sports.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -36,7 +38,7 @@
     padding:20px 0 8px;
   }
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);}
-  .brand svg{display:block;}
+  .brand-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;display:block;}
   .brand-name{font-weight:700;font-size:22px;letter-spacing:-0.01em;}
   .nav-links{display:flex;align-items:center;gap:38px;}
   .nav-links a{text-decoration:none;color:var(--ink);font-weight:400;font-size:15.5px;}
@@ -231,15 +233,11 @@
   <!-- ============ NAV ============ -->
   <nav>
     <a class="brand" href="index.html">
-      <svg width="42" height="34" viewBox="0 0 64 52" aria-hidden="true">
-        <path d="M6 26 C6 12, 16 4, 27 4 C 38 4, 46 12, 46 26 C 46 40, 38 48, 27 48 C 16 48, 6 40, 6 26 Z M27 4 L27 48" fill="#0d0d0d"/>
-        <path d="M34 26 C34 15, 41 8, 48 8 C 55 8, 60 15, 60 26 C 60 37, 55 44, 48 44 C 41 44, 34 37, 34 26 Z" fill="none" stroke="#0d0d0d" stroke-width="7"/>
-      </svg>
+      <img class="brand-avatar" src="nassim-avatar-detect (1).gif" alt="Nassim">
       <span class="brand-name">Nassim</span>
     </a>
     <div class="nav-links">
       <a class="is-current" href="projects.html">Work</a>
-      <a href="index.html#services">Services</a>
       <a href="index.html#about">About</a>
       <a href="https://github.com/Nassimos07" target="_blank" rel="noopener">GitHub</a>
       <a class="pill" href="index.html#contact">Say Hello</a>
