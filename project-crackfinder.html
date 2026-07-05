@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#0d0d0d;
@@ -17,7 +17,7 @@
     --gray-text:#6f6f6f;
     --gray-card:#f4f4f4;
     --line:#e9e9e9;
-    --radius:20px;
+    --radius:18px;
     --footer-h:54px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -25,174 +25,178 @@
   body{
     background:var(--white);color:var(--ink);
     font-family:'Poppins',system-ui,sans-serif;
-    font-size:16px;line-height:1.6;
+    font-size:16px;line-height:1.5;
     -webkit-font-smoothing:antialiased;
-    padding-bottom:calc(var(--footer-h) + 18px);
+    padding-bottom:var(--footer-h);
   }
-  .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 36px;}
   a:focus-visible{outline:3px solid #bbb;outline-offset:3px;border-radius:6px;}
 
   nav{
     display:flex;align-items:center;justify-content:space-between;
-    padding:20px 0 8px;
+    padding:14px 0 10px;
   }
-  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);}
-  .brand-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;display:block;}
-  .brand-name{font-weight:700;font-size:22px;letter-spacing:-0.01em;}
-  .nav-links{display:flex;align-items:center;gap:38px;}
-  .nav-links a{text-decoration:none;color:var(--ink);font-weight:400;font-size:15.5px;}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);}
+  .brand-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;display:block;}
+  .brand-name{font-weight:700;font-size:20px;letter-spacing:-0.01em;}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{text-decoration:none;color:var(--ink);font-weight:400;font-size:15px;}
   .nav-links a:not(.pill):hover{opacity:.55;}
   .pill{
     background:var(--ink);color:#fff !important;
-    font-weight:500;font-size:15px;
-    padding:10px 26px;border-radius:12px;
-    box-shadow:7px 7px 0 #e1e1e1;
+    font-weight:500;font-size:14px;
+    padding:8px 22px;border-radius:11px;
+    box-shadow:6px 6px 0 #e1e1e1;
     transition:transform .15s ease,box-shadow .15s ease;
   }
-  .pill:hover{box-shadow:5px 5px 0 #d7d7d7;transform:translate(2px,2px);}
+  .pill:hover{box-shadow:4px 4px 0 #d7d7d7;transform:translate(2px,2px);}
 
-  .project-hero{
-    display:grid;grid-template-columns:minmax(0,.95fr) minmax(380px,1fr);
-    gap:52px;align-items:center;
+  /* ===== single-view case layout ===== */
+  .case{
+    display:grid;
+    grid-template-rows:auto minmax(0,1fr) auto;
+    gap:14px;
     min-height:0;
-    padding:26px 0 28px;
+  }
+  /* lock to one viewport on desktop */
+  @media (min-width:1000px) and (min-height:640px){
+    body{overflow:hidden;height:100vh;}
+    .wrap{height:calc(100vh - var(--footer-h));display:flex;flex-direction:column;}
+    .case{flex:1;min-height:0;padding-bottom:10px;}
+  }
+
+  /* --- hero band --- */
+  .case-hero{
+    display:grid;grid-template-columns:minmax(0,1.02fr) minmax(340px,.98fr);
+    gap:34px;align-items:center;
   }
   .back-link{
-    display:inline-flex;align-items:center;gap:8px;
-    color:var(--gray-text);font-weight:600;font-size:14px;
-    text-decoration:none;margin-bottom:22px;
+    display:inline-flex;align-items:center;gap:7px;
+    color:var(--gray-text);font-weight:600;font-size:12.5px;
+    text-decoration:none;margin-bottom:8px;
   }
   .back-link:hover{color:var(--ink);}
   .eyebrow{
     font-family:'JetBrains Mono',monospace;
-    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--gray-text);margin-bottom:12px;
+    font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gray-text);margin-bottom:6px;
   }
   h1{
-    font-weight:700;font-size:clamp(30px,3.2vw,44px);
-    line-height:1.08;letter-spacing:-0.02em;margin-bottom:16px;
-    max-width:640px;
+    font-weight:700;font-size:clamp(24px,2.3vw,32px);
+    line-height:1.08;letter-spacing:-0.02em;margin-bottom:8px;
   }
   .lede{
-    color:var(--gray-text);font-size:15.5px;line-height:1.52;
-    max-width:50ch;margin-bottom:22px;
+    color:var(--gray-text);font-size:13.5px;line-height:1.5;
+    max-width:54ch;margin-bottom:12px;
   }
   .lede strong{color:var(--ink);font-weight:600;}
-  .hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
-  .cta{
-    display:inline-flex;align-items:center;justify-content:center;
-    min-height:54px;padding:0 30px;border-radius:14px;
-    background:var(--ink);color:#fff;text-decoration:none;
-    font-weight:500;font-size:16px;
-    transition:transform .15s ease, box-shadow .15s ease;
+  .meta-chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;
+    color:var(--ink);background:var(--gray-card);
+    border-radius:100px;padding:6px 12px;white-space:nowrap;
   }
-  .cta:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.16);}
-  .ghost{
-    display:inline-flex;align-items:center;justify-content:center;
-    min-height:54px;padding:0 24px;border:1px solid #cfcfcf;border-radius:14px;
-    color:var(--ink);text-decoration:none;font-weight:600;font-size:16px;
-    transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+  .chip b{font-weight:500;color:var(--gray-text);margin-right:5px;font-weight:400;}
+  .proj-links{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:12px;}
+  .plink{display:inline-flex;align-items:center;gap:7px;}
+  .plink svg{width:13px;height:13px;color:var(--ink);flex-shrink:0;}
+  .plink .plabel{
+    font-family:'JetBrains Mono',monospace;font-size:9.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--gray-text);
   }
-  .ghost:hover{border-color:var(--ink);transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.08);}
-
-  .vision-panel{
+  .plink a{
+    color:var(--ink);font-weight:600;font-size:12px;text-decoration:none;
+    border-bottom:1.5px solid var(--ink);padding-bottom:1px;
+  }
+  .plink a:hover{opacity:.6;}
+  .plink .pna{
+    font-size:12px;font-weight:500;color:#a9a9a5;
+  }
+  .case-media{
     background:var(--gray-card);border-radius:var(--radius);
-    aspect-ratio:1.18/1;padding:22px;
+    padding:12px;height:100%;max-height:250px;
     display:flex;align-items:center;justify-content:center;
     overflow:hidden;
   }
-  .vision-panel img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block;}
-  .vision-panel iframe{
-    width:100%;height:100%;border:0;border-radius:14px;display:block;
-    background:#000;
+  .case-media img{
+    width:100%;height:100%;max-height:226px;
+    object-fit:cover;border-radius:12px;display:block;
+  }
+  .case-media iframe{
+    width:100%;height:100%;min-height:200px;border:0;border-radius:12px;display:block;background:#000;
+    aspect-ratio:16/9;
   }
 
-  .meta-strip{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-    background:#d9d9d9;border-radius:16px;overflow:hidden;margin-bottom:42px;
+  /* --- middle: challenge | approach | outcomes --- */
+  .case-grid{
+    display:grid;grid-template-columns:1fr 1.28fr .92fr;
+    gap:14px;min-height:0;
   }
-  .meta-item{background:var(--gray-card);padding:16px 18px;}
-  .meta-label{
-    font-family:'JetBrains Mono',monospace;font-size:12px;
-    color:var(--gray-text);text-transform:uppercase;letter-spacing:.12em;
-    margin-bottom:8px;
+  .panel{
+    background:var(--gray-card);border-radius:var(--radius);
+    padding:18px 20px;min-height:0;overflow:hidden;
+    display:flex;flex-direction:column;
   }
-  .meta-value{font-weight:600;font-size:15.5px;line-height:1.35;}
+  .panel-green{background:#f1f4ef;}
+  .panel-red{background:#f6f1ef;}
+  .panel-title{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--gray-text);
+    margin-bottom:12px;
+  }
+  .panel-list{display:flex;flex-direction:column;gap:10px;flex:1;justify-content:space-evenly;}
+  .p-item h3{font-size:13.5px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;}
+  .p-item p{color:var(--gray-text);font-size:12px;line-height:1.45;}
 
-  .section{position:relative;padding:58px 0 0;}
-  .section::before{
+  .step-item{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;}
+  .step-item .num{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--gray-text);
+    padding-top:2px;letter-spacing:.05em;
+  }
+  .step-item h3{font-size:13.5px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;}
+  .step-item p{color:var(--gray-text);font-size:12px;line-height:1.45;}
+
+  .p-item .o-num{
+    display:block;font-size:clamp(19px,1.7vw,24px);font-weight:700;
+    letter-spacing:-0.02em;line-height:1.05;margin-bottom:3px;
+  }
+
+  /* --- bottom strip: stack + pager --- */
+  .case-foot{
+    position:relative;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;flex-wrap:wrap;
+    padding-top:14px;
+  }
+  .case-foot::before{
     content:"";position:absolute;left:0;right:0;top:0;height:1px;
     background:linear-gradient(90deg, transparent 0%, #d8d8d8 14%, #9b9b9b 50%, #d8d8d8 86%, transparent 100%);
   }
-  .section::after{
-    content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%);
-    width:86px;height:12px;background:
-      radial-gradient(circle at 31px 50%, #b8b8b8 0 3px, transparent 3.5px),
-      radial-gradient(circle at 43px 50%, #b8b8b8 0 3px, transparent 3.5px),
-      radial-gradient(circle at 55px 50%, #b8b8b8 0 3px, transparent 3.5px);
-    background-color:var(--white);
+  .stack-line{display:flex;align-items:center;flex-wrap:wrap;gap:7px;}
+  .stack-label{
+    font-family:'Silkscreen',monospace;font-size:11px;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
+    margin-right:6px;
   }
-  .section-head{display:grid;grid-template-columns:.42fr 1fr;gap:36px;align-items:start;margin-bottom:28px;}
-  h2{font-weight:700;font-size:clamp(26px,2.4vw,34px);line-height:1.12;letter-spacing:-0.02em;}
-  .section-copy{color:var(--gray-text);font-size:16px;max-width:70ch;}
-  .section-copy strong{color:var(--ink);font-weight:600;}
-
-  /* challenge cards */
-  .challenge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .c-card{background:var(--gray-card);border-radius:var(--radius);padding:24px;}
-  .c-card h3{font-size:17px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;margin-bottom:8px;}
-  .c-card p{color:var(--gray-text);font-size:14px;line-height:1.55;}
-
-  /* approach steps */
-  .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-  .step{background:var(--gray-card);border-radius:var(--radius);padding:26px;}
-  .step-num{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;color:var(--gray-text);margin-bottom:12px;}
-  .step h3{font-size:18px;font-weight:600;letter-spacing:-0.01em;margin-bottom:8px;}
-  .step p{color:var(--gray-text);font-size:14.5px;line-height:1.55;}
-
-  /* outcomes */
-  .outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:22px;}
-  .outcome{background:var(--ink);color:#fff;border-radius:var(--radius);padding:28px 26px;}
-  .outcome strong{display:block;font-size:clamp(24px,2.2vw,32px);font-weight:700;letter-spacing:-0.02em;line-height:1.05;margin-bottom:10px;}
-  .outcome span{font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.5;color:rgba(255,255,255,.62);letter-spacing:.04em;display:block;}
-  .outcome-note{color:var(--gray-text);font-size:15px;max-width:70ch;}
-  .outcome-note strong{color:var(--ink);font-weight:600;}
-
-  /* tech stack groups */
-  .stack-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .stack-group{background:var(--gray-card);border-radius:var(--radius);padding:24px;}
-  .stack-group h3{
-    font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;
-    letter-spacing:.16em;text-transform:uppercase;color:var(--gray-text);margin-bottom:14px;
-  }
-  .stack-list{display:flex;flex-wrap:wrap;gap:8px;}
   .tag{
-    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gray-text);
-    background:#fff;border-radius:100px;padding:6px 11px;white-space:nowrap;
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink);
+    background:var(--white);border:1px solid #cfcfcf;border-radius:9px;
+    padding:6px 12px;white-space:nowrap;
+    box-shadow:4px 4px 0 #e1e1e1;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
   }
-
-  /* CTA band + pager */
-  .cta-band{
-    margin-top:64px;background:var(--gray-card);border-radius:var(--radius);
-    padding:32px 36px;display:flex;align-items:center;justify-content:space-between;
-    gap:24px;flex-wrap:wrap;
+  .tag:hover{
+    border-color:var(--ink);
+    box-shadow:2px 2px 0 #d7d7d7;transform:translate(2px,2px);
   }
-  .cta-band h2{font-size:clamp(20px,1.9vw,26px);}
-  .cta-band p{color:var(--gray-text);font-size:14.5px;margin-top:6px;max-width:52ch;}
-  .cta-actions{display:flex;gap:14px;flex-wrap:wrap;}
-  .pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px;}
-  .pager a{
-    background:#f5f5f4;border:1px solid #e8e8e6;border-radius:var(--radius);
-    padding:20px 24px;text-decoration:none;color:var(--ink);
-    transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;
+  .foot-links{display:flex;align-items:center;gap:18px;white-space:nowrap;}
+  .foot-links a{
+    color:var(--ink);font-weight:600;font-size:12.5px;text-decoration:none;
   }
-  .pager a:hover{transform:translateY(-4px);border-color:#d8d8d5;box-shadow:0 16px 36px rgba(0,0,0,.07);}
-  .pager .dir{
-    font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--gray-text);display:block;margin-bottom:8px;
+  .foot-links a:hover{opacity:.6;}
+  .foot-links .mono{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:400;color:var(--gray-text);
   }
-  .pager strong{font-weight:600;font-size:16.5px;letter-spacing:-0.01em;}
-  .pager .next{text-align:right;}
 
   footer{
     position:fixed;left:0;right:0;bottom:0;z-index:100;
@@ -207,27 +211,15 @@
   .socials a:hover{opacity:.55;}
   .copy{font-size:11.5px;color:var(--ink);justify-self:end;white-space:nowrap;}
 
-  @media (max-width:1100px){
-    h1{font-size:clamp(28px,3vw,38px);}
-    .lede{font-size:15px;max-width:48ch;}
-  }
-  @media (max-width:920px){
-    .project-hero{grid-template-columns:1fr;min-height:auto;padding:38px 0 60px;}
-    .vision-panel{max-width:560px;}
-    .meta-strip{grid-template-columns:repeat(2,1fr);}
-    .section-head{grid-template-columns:1fr;gap:14px;}
-    .challenge-grid,.stack-groups,.outcome-grid{grid-template-columns:1fr;}
-    .steps{grid-template-columns:1fr;}
+  /* --- fall back to normal scrolling layout on smaller screens --- */
+  @media (max-width:999px){
+    .case-hero{grid-template-columns:1fr;gap:20px;}
+    .case-media{max-height:none;}
+    .case-grid{grid-template-columns:1fr;}
     .nav-links a:not(.pill){display:none;}
   }
   @media (max-width:560px){
-    .wrap{padding:0 22px;}
-    h1{font-size:clamp(30px,11vw,42px);white-space:normal;}
-    .project-hero{gap:32px;}
-    .meta-strip{grid-template-columns:1fr;margin-bottom:42px;}
-    .cta-band{padding:26px 24px;}
-    .pager{grid-template-columns:1fr;}
-    .pager .next{text-align:left;}
+    .wrap{padding:0 20px;}
     footer{grid-template-columns:1fr;align-items:flex-start;gap:8px;padding:10px 22px 12px;}
     footer::before{left:22px;right:22px;}
     .copy{justify-self:start;white-space:normal;}
@@ -249,185 +241,150 @@
     </div>
   </nav>
 
-  <main>
+  <main class="case">
 
-    <header class="project-hero">
+    <header class="case-hero">
       <div>
         <a class="back-link" href="projects.html">← All projects</a>
         <p class="eyebrow">Sports Analytics · Switzerland</p>
         <h1>CrackFinder — equestrian analysis</h1>
-        <p class="lede">A computer-vision pipeline that reads equine performance straight from ordinary video — <strong>segmentation, motion recognition, and 3D vision</strong> combined to quantify what trainers currently judge by eye.</p>
-        <div class="hero-actions">
-          <a class="cta" href="#challenge">Read the case study</a>
+        <p class="lede">A computer-vision pipeline that reads equine performance from ordinary video — <strong>segmentation, motion recognition, and 3D vision</strong> quantifying what trainers judge by eye.</p>
+        <div class="meta-chips">
+          <span class="chip"><b>ROLE</b>CV Engineer</span>
+          <span class="chip"><b>CLIENT</b>Confidential · Switzerland</span>
+          <span class="chip"><b>STATUS</b>Delivered</span>
+        </div>
+        <div class="proj-links" aria-label="Project links">
+          <span class="plink">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.05.78 2.13v3.16c0 .3.21.67.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+            <span class="plabel">GitHub</span>
+            <span class="pna">Confidential</span>
+          </span>
+          <span class="plink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg>
+            <span class="plabel">Client website</span>
+            <span class="pna">Not available</span>
+          </span>
         </div>
       </div>
-
-      <div class="vision-panel" aria-label="CrackFinder segmentation preview">
+      <div class="case-media" aria-label="CrackFinder segmentation preview">
         <img src="crackfinder-preview.jpg" alt="Horse and rider mid-jump with segmentation mask outline">
       </div>
     </header>
 
-    <section class="meta-strip" aria-label="Project facts">
-      <div class="meta-item">
-        <p class="meta-label">Role</p>
-        <p class="meta-value">CV Engineer</p>
-      </div>
-      <div class="meta-item">
-        <p class="meta-label">Client</p>
-        <p class="meta-value">Confidential · Switzerland</p>
-      </div>
-      <div class="meta-item">
-        <p class="meta-label">Domain</p>
-        <p class="meta-value">Sports Analytics</p>
-      </div>
-      <div class="meta-item">
-        <p class="meta-label">Status</p>
-        <p class="meta-value">Delivered</p>
-      </div>
-    </section>
+    <div class="case-grid">
 
-    <section class="section" id="challenge">
-      <div class="section-head">
-        <h2>The challenge</h2>
-        <p class="section-copy">Equestrian performance is scored by expert eyes — subjective, inconsistent, and impossible to compare across horses and sessions. The only available signal was <strong>ordinary video shot in busy arenas</strong>.</p>
-      </div>
-      <div class="challenge-grid">
-        <article class="c-card">
-          <h3>A deformable, two-body subject</h3>
-          <p>Horse and rider move as one articulated mass. Masks have to separate them cleanly from rails, jumps, and crowded backgrounds.</p>
-        </article>
-        <article class="c-card">
-          <h3>Judgment locked in expert eyes</h3>
-          <p>Performance had to become measurable — signals that are consistent across horses, sessions, and camera setups.</p>
-        </article>
-        <article class="c-card">
-          <h3>Footage from the wild</h3>
-          <p>Variable arenas, lighting, and camera placements — no studio conditions, no sensors on the horse.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="approach">
-      <div class="section-head">
-        <h2>The approach</h2>
-        <p class="section-copy">Extract pixel-perfect subjects first, understand their motion second, ground it in 3D geometry third — then turn all of it into performance signals.</p>
-      </div>
-      <div class="steps">
-        <article class="step">
-          <p class="step-num">01 — SEGMENTATION</p>
-          <h3>SAM3 horse-and-rider masks</h3>
-          <p>Built the segmentation layer on SAM3 to produce pixel-accurate horse-and-rider masks that stay robust through motion blur and arena clutter.</p>
-        </article>
-        <article class="step">
-          <p class="step-num">02 — MOTION</p>
-          <h3>Motion recognition</h3>
-          <p>Modeled the mask sequences over time to recognize and index the movements that matter in performance review.</p>
-        </article>
-        <article class="step">
-          <p class="step-num">03 — GEOMETRY</p>
-          <h3>3D vision layer</h3>
-          <p>Lifted 2D signals toward 3D geometry so measurements stay comparable across different camera placements and arenas.</p>
-        </article>
-        <article class="step">
-          <p class="step-num">04 — SIGNALS</p>
-          <h3>Performance extraction</h3>
-          <p>Aggregated segmentation, motion, and geometry into performance signals designed to feed analysis and prediction.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="outcomes">
-      <div class="section-head">
-        <h2>Outcomes</h2>
-        <p class="section-copy">Expert judgment, translated into signals a model can learn from — using nothing but the video that already exists.</p>
-      </div>
-      <div class="outcome-grid">
-        <div class="outcome">
-          <strong>Pixel-level</strong>
-          <span>SAM3 masks of horse and rider in cluttered arenas</span>
-        </div>
-        <div class="outcome">
-          <strong>Video-only</strong>
-          <span>no sensors, no rigs — ordinary footage in, signals out</span>
-        </div>
-        <div class="outcome">
-          <strong>Prediction-ready</strong>
-          <span>performance signals built to feed downstream models</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="stack">
-      <div class="section-head">
-        <h2>Tech stack</h2>
-        <p class="section-copy">The tools behind each layer of the pipeline.</p>
-      </div>
-      <div class="stack-groups">
-        <div class="stack-group">
-          <h3>Segmentation</h3>
-          <div class="stack-list">
-            <span class="tag">SAM3</span>
-            <span class="tag">PyTorch</span>
+      <section class="panel panel-red" aria-labelledby="t-challenge">
+        <h2 class="panel-title" id="t-challenge">The challenge</h2>
+        <div class="panel-list">
+          <div class="p-item">
+            <h3>A deformable, two-body subject</h3>
+            <p>Horse and rider move as one articulated mass — masks must separate them from rails and crowds.</p>
+          </div>
+          <div class="p-item">
+            <h3>Judgment locked in expert eyes</h3>
+            <p>Performance had to become measurable and comparable across horses and sessions.</p>
+          </div>
+          <div class="p-item">
+            <h3>Footage from the wild</h3>
+            <p>Variable arenas, lighting, and cameras — no sensors on the horse.</p>
           </div>
         </div>
-        <div class="stack-group">
-          <h3>Understanding</h3>
-          <div class="stack-list">
-            <span class="tag">Motion recognition</span>
-            <span class="tag">3D vision</span>
+      </section>
+
+      <section class="panel panel-green" aria-labelledby="t-approach">
+        <h2 class="panel-title" id="t-approach">The approach</h2>
+        <div class="panel-list">
+          <div class="step-item">
+            <span class="num">01</span>
+            <div>
+              <h3>SAM3 segmentation</h3>
+              <p>Pixel-accurate horse-and-rider masks, robust to motion blur and arena clutter.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="num">02</span>
+            <div>
+              <h3>Motion recognition</h3>
+              <p>Mask sequences modeled over time to index the movements that matter in review.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="num">03</span>
+            <div>
+              <h3>3D vision layer</h3>
+              <p>2D signals lifted toward 3D geometry, comparable across camera placements.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="num">04</span>
+            <div>
+              <h3>Performance signals</h3>
+              <p>Segmentation, motion, and geometry aggregated into indicators built for prediction.</p>
+            </div>
           </div>
         </div>
-        <div class="stack-group">
-          <h3>Data</h3>
-          <div class="stack-list">
-            <span class="tag">Video pipelines</span>
-            <span class="tag">Python</span>
+      </section>
+
+      <section class="panel" aria-labelledby="t-outcomes">
+        <h2 class="panel-title" id="t-outcomes">Outcomes</h2>
+        <div class="panel-list">
+          <div class="p-item">
+            <span class="o-num">Pixel-level</span>
+            <h3>SAM3 masks</h3>
+            <p>Horse and rider isolated cleanly in cluttered arenas.</p>
+          </div>
+          <div class="p-item">
+            <span class="o-num">Video-only</span>
+            <h3>No sensors, no rigs</h3>
+            <p>Ordinary footage in, measurable signals out.</p>
+          </div>
+          <div class="p-item">
+            <span class="o-num">Prediction-ready</span>
+            <h3>Downstream signals</h3>
+            <p>Built to feed performance prediction models.</p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="cta-band">
-        <div>
-          <h2>Working on something similar?</h2>
-          <p>If you need expert judgment turned into measurable signals — from video alone — let's talk.</p>
-        </div>
-        <div class="cta-actions">
-          <a class="cta" href="https://calendly.com/nassimhammemiwork/ml-computer-vision-project-call" target="_blank" rel="noopener">Book a free consultation</a>
-          <a class="ghost" href="mailto:hello@calibrx.io">Email me</a>
-        </div>
-      </div>
+    </div>
 
-      <nav class="pager" aria-label="More projects">
-        <a href="project-boveye.html">
-          <span class="dir">← Previous project</span>
-          <strong>BovEye — cattle detection</strong>
-        </a>
-        <a class="next" href="project-satellite.html">
-          <span class="dir">Next project →</span>
-          <strong>Satellite crop segmentation</strong>
-        </a>
-      </nav>
-    </section>
+    <div class="case-foot">
+      <div class="stack-line">
+        <span class="stack-label">Stack</span>
+        <span class="tag">SAM3</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">Motion recognition</span>
+        <span class="tag">3D vision</span>
+        <span class="tag">Video pipelines</span>
+        <span class="tag">Python</span>
+      </div>
+      <div class="foot-links">
+        <a href="project-boveye.html"><span class="mono">←</span> BovEye</a>
+        <a href="https://calendly.com/nassimhammemiwork/ml-computer-vision-project-call" target="_blank" rel="noopener">Book a call</a>
+        <a href="project-satellite.html">Satellite <span class="mono">→</span></a>
+      </div>
+    </div>
 
   </main>
-
-  <footer id="contact">
-    <div class="socials">
-      <a href="https://github.com/Nassimos07" target="_blank" rel="noopener" aria-label="GitHub">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.05.78 2.13v3.16c0 .3.21.67.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-      </a>
-      <a href="#" aria-label="LinkedIn">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-      </a>
-      <a href="#" aria-label="Upwork">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.56 7.06c-1.88 0-3.31 1.24-3.94 3.22-.98-1.48-1.73-3.26-2.17-4.75H9.83v5.83c0 1.15-.94 2.09-2.09 2.09s-2.09-.94-2.09-2.09V5.53H3.06v5.84a4.68 4.68 0 0 0 4.67 4.68 4.69 4.69 0 0 0 4.68-4.68v-.98c.51 1.05 1.13 2.12 1.88 3.07l-1.6 7.52h2.65l1.16-5.45c1.01.65 2.18 1.06 3.52 1.06 2.86 0 5.19-2.34 5.19-5.21 0-2.86-2.33-5.32-5.19-5.32h.54zm0 7.87c-1.04 0-2.02-.44-2.91-1.16l.22-.9v-.04c.16-.92.67-2.47 2.24-2.47a2.29 2.29 0 0 1 2.29 2.29c0 1.26-1.03 2.28-2.29 2.28h.45z" transform="translate(-1.5,0)"/></svg>
-      </a>
-      <a href="mailto:hello@calibrx.io" aria-label="Email">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>
-      </a>
-    </div>
-    <span class="copy">© Nassim Hammami - All rights reserved</span>
-  </footer>
 </div>
+
+<footer id="contact">
+  <div class="socials">
+    <a href="https://github.com/Nassimos07" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.05.78 2.13v3.16c0 .3.21.67.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+    </a>
+    <a href="#" aria-label="LinkedIn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+    </a>
+    <a href="#" aria-label="Upwork">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.56 7.06c-1.88 0-3.31 1.24-3.94 3.22-.98-1.48-1.73-3.26-2.17-4.75H9.83v5.83c0 1.15-.94 2.09-2.09 2.09s-2.09-.94-2.09-2.09V5.53H3.06v5.84a4.68 4.68 0 0 0 4.67 4.68 4.69 4.69 0 0 0 4.68-4.68v-.98c.51 1.05 1.13 2.12 1.88 3.07l-1.6 7.52h2.65l1.16-5.45c1.01.65 2.18 1.06 3.52 1.06 2.86 0 5.19-2.34 5.19-5.21 0-2.86-2.33-5.32-5.19-5.32h.54zm0 7.87c-1.04 0-2.02-.44-2.91-1.16l.22-.9v-.04c.16-.92.67-2.47 2.24-2.47a2.29 2.29 0 0 1 2.29 2.29c0 1.26-1.03 2.28-2.29 2.28h.45z" transform="translate(-1.5,0)"/></svg>
+    </a>
+    <a href="mailto:hello@calibrx.io" aria-label="Email">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>
+    </a>
+  </div>
+  <span class="copy">© Nassim Hammami - All rights reserved</span>
+</footer>
 </body>
 </html>
