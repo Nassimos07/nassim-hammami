@@ -177,12 +177,6 @@
   }
   .discover:hover{opacity:.6;}
 
-  .next-project{
-    margin:92px 0 30px;background:var(--gray-card);border-radius:28px;
-    padding:42px;display:flex;align-items:center;justify-content:space-between;gap:24px;
-  }
-  .next-project p{color:var(--gray-text);margin-top:6px;}
-
   footer{
     position:fixed;left:0;right:0;bottom:0;z-index:100;
     background:var(--white);min-height:var(--footer-h);
@@ -209,10 +203,9 @@
     h1{font-size:clamp(34px,13vw,52px);}
     .project-hero{gap:32px;}
     .meta-strip{grid-template-columns:1fr;margin-bottom:70px;}
-    .info-card,.note,.metric-board,.next-project{padding:28px;}
+    .info-card,.note,.metric-board{padding:28px;}
     .metric-board{grid-template-columns:1fr;}
     .step{grid-template-columns:1fr;gap:8px;}
-    .next-project{align-items:flex-start;flex-direction:column;}
     footer{grid-template-columns:1fr;align-items:flex-start;gap:8px;padding:10px 22px 12px;}
     footer::before{left:22px;right:22px;}
     .copy{justify-self:start;white-space:normal;}
@@ -243,12 +236,11 @@
     <header class="project-hero">
       <div>
         <a class="back-link" href="index.html#work">← Back to work</a>
-        <p class="eyebrow">Project template · computer vision</p>
+        <p class="eyebrow">Computer vision · aerial agriculture</p>
         <h1>BovEye — cattle detection</h1>
         <p class="lede">A 4-channel RGBN detection pipeline for aerial livestock monitoring, built around <strong>RF-DETR adaptation</strong>, calibrated band normalization, and threshold-sweep evaluation dashboards.</p>
         <div class="hero-actions">
           <a class="cta" href="#system">View the system</a>
-          <a class="ghost" href="https://calendly.com/nassimhammemiwork/ml-computer-vision-project-call" target="_blank" rel="noopener">Book a Free Consultation →</a>
         </div>
       </div>
 
@@ -311,8 +303,8 @@
 
     <section class="section" id="system">
       <div class="section-head">
-        <h2>What this page template should explain</h2>
-        <p class="section-copy">Each project page should quickly show the problem, the engineering choices, and the production value. For BovEye, the story is simple: turn multispectral drone imagery into a detection system teammates can inspect, tune, and trust.</p>
+        <h2>Project overview</h2>
+        <p class="section-copy">BovEye turns multispectral drone imagery into a cattle-detection system that can support aerial livestock monitoring. The core work was adapting the model and evaluation pipeline for RGBN data instead of ordinary RGB images.</p>
       </div>
       <div class="two-col">
         <article class="info-card">
@@ -328,8 +320,8 @@
 
     <section class="section">
       <div class="section-head">
-        <h2>Delivery blueprint</h2>
-        <p class="section-copy">Use this section on every project page to show how the work moved from raw data to a usable system. Keep it concrete, readable, and close to what was actually shipped.</p>
+        <h2>How it was built</h2>
+        <p class="section-copy">The project focused on the parts that make detection reliable in a real workflow: clean multispectral inputs, model adaptation, and evaluation outputs that expose the tradeoffs clearly.</p>
       </div>
       <div class="timeline">
         <div class="step">
@@ -358,8 +350,8 @@
 
     <section class="section">
       <div class="section-head">
-        <h2>Reusable project blocks</h2>
-        <p class="section-copy">For the next projects, this area can hold metrics, links, screenshots, technical stack, or client-safe notes. The layout stays the same; only the content changes.</p>
+        <h2>Results and stack</h2>
+        <p class="section-copy">The final system kept the RGBN signal available end to end, adapted the detector to the input format, and produced evaluation artifacts that made threshold selection easier to reason about.</p>
       </div>
       <div class="outcome-grid">
         <div class="metric-board">
@@ -391,19 +383,12 @@
               <span class="tag">evaluation dashboards</span>
             </div>
           </div>
-          <p>This is the place to add private repo links, demo videos, paper references, or production screenshots when you are ready to customize each project.</p>
+          <p>The emphasis was practical: preserve the extra spectral channel, keep the training and evaluation path readable, and make the results understandable outside the notebook.</p>
           <a class="discover" href="index.html#work">Back to selected work</a>
         </aside>
       </div>
     </section>
 
-    <section class="next-project">
-      <div>
-        <h2>Ready for the next project page</h2>
-        <p>Duplicate this template, change the title, facts, system story, metrics, and links.</p>
-      </div>
-      <a class="ghost" href="https://calendly.com/nassimhammemiwork/ml-computer-vision-project-call" target="_blank" rel="noopener">Book a Free Consultation →</a>
-    </section>
   </main>
 
   <footer id="contact">
