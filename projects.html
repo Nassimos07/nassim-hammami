@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All projects | Nassim Hammami</title>
+<meta name="description" content="A gallery of Nassim Hammami's computer-vision and machine-learning projects across medical imaging, agriculture, remote sensing, and sports.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d0d0d;
+    --white:#ffffff;
+    --gray-text:#6f6f6f;
+    --gray-card:#f4f4f4;
+    --line:#e9e9e9;
+    --radius:20px;
+    --footer-h:54px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);color:var(--ink);
+    font-family:'Poppins',system-ui,sans-serif;
+    font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:calc(var(--footer-h) + 24px);
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
+  a:focus-visible,button:focus-visible{outline:3px solid #bbb;outline-offset:3px;border-radius:6px;}
+
+  /* ============ NAV ============ */
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 0 8px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);}
+  .brand svg{display:block;}
+  .brand-name{font-weight:700;font-size:22px;letter-spacing:-0.01em;}
+  .nav-links{display:flex;align-items:center;gap:38px;}
+  .nav-links a{text-decoration:none;color:var(--ink);font-weight:400;font-size:15.5px;}
+  .nav-links a:not(.pill):hover{opacity:.55;}
+  .nav-links a.is-current{font-weight:600;}
+  .pill{
+    background:var(--ink);color:#fff !important;
+    font-weight:500;font-size:15px;
+    padding:10px 26px;border-radius:12px;
+    box-shadow:7px 7px 0 #e1e1e1;
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .pill:hover{box-shadow:5px 5px 0 #d7d7d7;transform:translate(2px,2px);}
+
+  /* ============ PAGE HEAD ============ */
+  .page-head{padding:30px 0 6px;}
+  .back-link{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--gray-text);font-weight:600;font-size:14px;
+    text-decoration:none;margin-bottom:20px;
+  }
+  .back-link:hover{color:var(--ink);}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gray-text);margin-bottom:12px;
+  }
+  h1{
+    font-weight:700;font-size:clamp(32px,3.4vw,46px);
+    line-height:1.06;letter-spacing:-0.02em;margin-bottom:16px;
+  }
+  .lede{color:var(--gray-text);font-size:17px;line-height:1.55;max-width:60ch;}
+  .lede strong{color:var(--ink);font-weight:600;}
+
+  /* ============ FILTER BAR ============ */
+  .filter-bar{
+    display:flex;flex-wrap:wrap;gap:10px;
+    margin-top:26px;padding-bottom:2px;
+  }
+  .chip{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Poppins',system-ui,sans-serif;
+    font-size:14px;font-weight:500;color:var(--ink);
+    background:var(--white);cursor:pointer;
+    border:1px solid #d8d8d5;border-radius:100px;
+    padding:9px 16px;
+    transition:transform .14s ease,box-shadow .14s ease,background .14s ease,border-color .14s ease,color .14s ease;
+  }
+  .chip .count{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    color:var(--gray-text);
+  }
+  .chip:hover{border-color:var(--ink);transform:translateY(-2px);}
+  .chip.is-active{
+    background:var(--ink);color:#fff;border-color:var(--ink);
+    box-shadow:5px 5px 0 #e1e1e1;
+  }
+  .chip.is-active .count{color:rgba(255,255,255,.7);}
+
+  /* ============ GALLERY ============ */
+  .gallery{position:relative;isolation:isolate;padding:48px 0 0;margin-top:34px;}
+  .gallery::before{
+    content:"";position:absolute;left:0;right:0;top:0;height:1px;
+    background:linear-gradient(90deg, transparent 0%, #d8d8d8 14%, #9b9b9b 50%, #d8d8d8 86%, transparent 100%);
+    z-index:4;pointer-events:none;
+  }
+  .gallery::after{
+    content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%);
+    width:86px;height:12px;background:
+      radial-gradient(circle at 31px 50%, #b8b8b8 0 3px, transparent 3.5px),
+      radial-gradient(circle at 43px 50%, #b8b8b8 0 3px, transparent 3.5px),
+      radial-gradient(circle at 55px 50%, #b8b8b8 0 3px, transparent 3.5px);
+    background-color:var(--white);
+    z-index:5;pointer-events:none;
+  }
+
+  .project-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+
+  .project-card{
+    display:flex;flex-direction:column;
+    background:#f5f5f4;border:1px solid #e8e8e6;border-radius:var(--radius);
+    overflow:hidden;
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  }
+  .project-card:hover{transform:translateY(-6px);border-color:#d8d8d5;box-shadow:0 22px 48px rgba(0,0,0,.09);}
+  .project-card[hidden]{display:none;}
+
+  .card-media{
+    position:relative;display:block;
+    aspect-ratio:16/9;
+    background-image:var(--preview, linear-gradient(135deg,#fff,#e9e9e9));
+    background-size:cover;background-position:center;
+    filter:saturate(.9) contrast(1.03);
+  }
+  .card-media::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.05),rgba(245,245,244,.10) 60%,rgba(245,245,244,.42)),
+      linear-gradient(90deg,rgba(0,0,0,.07),transparent 26%,transparent 74%,rgba(0,0,0,.05));
+    box-shadow:inset 0 -1px 0 rgba(0,0,0,.06);
+    pointer-events:none;
+  }
+  a.card-media:hover{filter:saturate(1) contrast(1.05);}
+
+  /* Previews reused from the homepage cards for a consistent look */
+  .calibrx-card{--preview:
+    radial-gradient(circle at 50% 50%, #0d0d0d 0 5px, transparent 6px),
+    radial-gradient(circle at 50% 50%, transparent 0 34px, #0d0d0d 35px 37px, transparent 38px),
+    linear-gradient(90deg, transparent 0 48%, #c9c9c9 48% 52%, transparent 52%),
+    linear-gradient(0deg, transparent 0 48%, #c9c9c9 48% 52%, transparent 52%),
+    #fff;
+  }
+  .boveye-card{--preview:url("125.jpg");}
+  .emgenisys-card{--preview:
+    linear-gradient(rgba(188,221,229,.16),rgba(255,255,255,.04)),
+    url("emgenisys-preview.jpg");
+  }
+  .crackfinder-card{--preview:
+    repeating-linear-gradient(118deg, rgba(13,13,13,.05) 0 2px, transparent 2px 17px),
+    radial-gradient(circle at 70% 40%, #0d0d0d 0 4px, transparent 5px),
+    linear-gradient(135deg,#f7f7f7,#e6e6e6);
+  }
+  .satellite-card{--preview:
+    linear-gradient(135deg,rgba(255,255,255,.12),rgba(244,244,244,.82)),
+    repeating-linear-gradient(90deg,#d9d9d9 0 1px,transparent 1px 42px),
+    repeating-linear-gradient(0deg,#d9d9d9 0 1px,transparent 1px 42px),
+    linear-gradient(135deg,#f7f7f7,#e5e5e5);
+  }
+  .padel-card{--preview:
+    radial-gradient(circle at 68% 38%, #0d0d0d 0 5px, transparent 6px),
+    linear-gradient(135deg,transparent 0 48%,#0d0d0d 49% 51%,transparent 52%),
+    linear-gradient(90deg,transparent 0 49%,#cfcfcf 49% 51%,transparent 51%),
+    linear-gradient(0deg,transparent 0 49%,#cfcfcf 49% 51%,transparent 51%),
+    #fff;
+  }
+
+  .card-body{
+    display:flex;flex-direction:column;gap:10px;
+    padding:20px 22px 22px;flex:1;
+  }
+  .card-eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--gray-text);
+  }
+  .card-eyebrow .dot{width:3px;height:3px;border-radius:50%;background:#c4c4c4;}
+  .card-body h3{
+    font-weight:600;font-size:19px;line-height:1.15;letter-spacing:-0.01em;
+  }
+  .card-body h3 a{color:var(--ink);text-decoration:none;}
+  .card-body h3 a:hover{opacity:.6;}
+  .card-body p{color:var(--gray-text);font-size:13.5px;line-height:1.45;}
+  .card-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--gray-text);
+    background:#fff;border:1px solid #ececea;border-radius:100px;
+    padding:4px 9px;white-space:nowrap;
+  }
+  .card-foot{margin-top:auto;padding-top:6px;}
+  .discover{
+    color:var(--ink);font-weight:600;font-size:14.5px;text-decoration:none;
+    border-bottom:2px solid var(--ink);padding-bottom:2px;
+  }
+  .discover:hover{opacity:.6;}
+  .soon{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;
+    color:var(--gray-text);
+  }
+  .soon::before{content:"";width:6px;height:6px;border-radius:50%;background:#c9c9c9;}
+
+  .empty{
+    padding:60px 0 10px;text-align:center;color:var(--gray-text);font-size:16px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    position:fixed;left:0;right:0;bottom:0;z-index:100;
+    background:var(--white);min-height:var(--footer-h);
+    padding:10px 40px 12px;
+    display:grid;grid-template-columns:auto auto;align-items:center;justify-content:space-between;gap:24px;
+  }
+  footer::before{content:"";position:absolute;left:40px;right:40px;top:0;height:1px;background:#b8b8b8;}
+  .socials{display:flex;align-items:center;gap:12px;}
+  .socials a{width:16px;height:16px;display:grid;place-items:center;color:var(--ink);}
+  .socials svg{width:15px;height:15px;display:block;}
+  .socials a:hover{opacity:.55;}
+  .copy{font-size:11.5px;color:var(--ink);justify-self:end;white-space:nowrap;}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{transition:none !important;animation:none !important;}
+  }
+  @media (max-width:1020px){
+    .project-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:900px){
+    .nav-links a:not(.pill){display:none;}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 22px;}
+    .project-grid{grid-template-columns:1fr;}
+    footer{grid-template-columns:1fr;align-items:flex-start;gap:8px;padding:10px 22px 12px;}
+    footer::before{left:22px;right:22px;}
+    .copy{justify-self:start;white-space:normal;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ NAV ============ -->
+  <nav>
+    <a class="brand" href="index.html">
+      <svg width="42" height="34" viewBox="0 0 64 52" aria-hidden="true">
+        <path d="M6 26 C6 12, 16 4, 27 4 C 38 4, 46 12, 46 26 C 46 40, 38 48, 27 48 C 16 48, 6 40, 6 26 Z M27 4 L27 48" fill="#0d0d0d"/>
+        <path d="M34 26 C34 15, 41 8, 48 8 C 55 8, 60 15, 60 26 C 60 37, 55 44, 48 44 C 41 44, 34 37, 34 26 Z" fill="none" stroke="#0d0d0d" stroke-width="7"/>
+      </svg>
+      <span class="brand-name">Nassim</span>
+    </a>
+    <div class="nav-links">
+      <a class="is-current" href="projects.html">Work</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="https://github.com/Nassimos07" target="_blank" rel="noopener">GitHub</a>
+      <a class="pill" href="index.html#contact">Say Hello</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ============ PAGE HEAD ============ -->
+    <header class="page-head">
+      <a class="back-link" href="index.html">← Back home</a>
+      <p class="eyebrow">Selected &amp; ongoing work</p>
+      <h1>All projects</h1>
+      <p class="lede">Production <strong>computer vision</strong> and <strong>machine learning</strong> across medical imaging, agriculture, remote sensing, and sports — from research through deployed APIs.</p>
+
+      <div class="filter-bar" role="tablist" aria-label="Filter projects by domain">
+        <button class="chip is-active" role="tab" aria-selected="true" data-filter="all">All <span class="count"></span></button>
+        <button class="chip" role="tab" aria-selected="false" data-filter="cv">Computer Vision <span class="count"></span></button>
+        <button class="chip" role="tab" aria-selected="false" data-filter="agritech">AgriTech <span class="count"></span></button>
+        <button class="chip" role="tab" aria-selected="false" data-filter="medical">Medical <span class="count"></span></button>
+        <button class="chip" role="tab" aria-selected="false" data-filter="sports">Sports <span class="count"></span></button>
+        <button class="chip" role="tab" aria-selected="false" data-filter="remote">Remote Sensing <span class="count"></span></button>
+      </div>
+    </header>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="gallery" aria-label="Project gallery">
+      <div class="project-grid" data-grid>
+
+        <!-- CalibrX -->
+        <article class="project-card" data-domains="cv">
+          <a class="card-media calibrx-card" href="https://calibrx.io" target="_blank" rel="noopener" aria-label="CalibrX — open calibrx.io"></a>
+          <div class="card-body">
+            <p class="card-eyebrow">Computer Vision Platform <span class="dot"></span> calibrx.io</p>
+            <h3><a href="https://calibrx.io" target="_blank" rel="noopener">CalibrX — camera calibration</a></h3>
+            <p>Camera calibration as a service: intrinsics, distortion, and pose measured through an SDK/API flow instead of weeks of research chores.</p>
+            <div class="card-tags">
+              <span class="tag">OpenCV</span><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">AWS</span>
+            </div>
+            <div class="card-foot"><a class="discover" href="https://calibrx.io" target="_blank" rel="noopener">Visit calibrx.io →</a></div>
+          </div>
+        </article>
+
+        <!-- Emgenisys -->
+        <article class="project-card" data-domains="medical agritech">
+          <a class="card-media emgenisys-card" href="project-emgenisys.html" aria-label="Emgenisys — embryo classification"></a>
+          <div class="card-body">
+            <p class="card-eyebrow">Medical / AgriTech <span class="dot"></span> USA</p>
+            <h3><a href="project-emgenisys.html">Emgenisys — embryo classification</a></h3>
+            <p>Deep-learning system for bovine embryo grade, stage, sex, and pregnancy prediction from 30-second clips — with clinical-grade validation.</p>
+            <div class="card-tags">
+              <span class="tag">PyTorch</span><span class="tag">Detection</span><span class="tag">Tracking</span><span class="tag">MLflow</span>
+            </div>
+            <div class="card-foot"><a class="discover" href="project-emgenisys.html">Read more →</a></div>
+          </div>
+        </article>
+
+        <!-- BovEye -->
+        <article class="project-card" data-domains="agritech cv">
+          <a class="card-media boveye-card" href="project-boveye.html" aria-label="BovEye — cattle detection"></a>
+          <div class="card-body">
+            <p class="card-eyebrow">AgriTech <span class="dot"></span> USA</p>
+            <h3><a href="project-boveye.html">BovEye — cattle detection</a></h3>
+            <p>A 4-channel RGBN detection pipeline for aerial livestock monitoring: patch-embedding surgery, calibrated band normalization, and threshold-sweep evaluation.</p>
+            <div class="card-tags">
+              <span class="tag">RF-DETR</span><span class="tag">YOLOv11</span><span class="tag">Multispectral</span><span class="tag">pycocotools</span>
+            </div>
+            <div class="card-foot"><a class="discover" href="project-boveye.html">Read more →</a></div>
+          </div>
+        </article>
+
+        <!-- CrackFinder -->
+        <article class="project-card" data-domains="sports cv">
+          <div class="card-media crackfinder-card" role="img" aria-label="CrackFinder — equestrian performance analysis"></div>
+          <div class="card-body">
+            <p class="card-eyebrow">Sports Analytics <span class="dot"></span> Switzerland</p>
+            <h3>CrackFinder — equestrian analysis</h3>
+            <p>A computer-vision pipeline for automated equestrian performance analysis, combining segmentation (SAM3), motion recognition, and 3D vision to extract signals from video.</p>
+            <div class="card-tags">
+              <span class="tag">PyTorch</span><span class="tag">SAM3</span><span class="tag">Motion Recognition</span><span class="tag">3D Vision</span>
+            </div>
+            <div class="card-foot"><span class="soon">Case study in progress</span></div>
+          </div>
+        </article>
+
+        <!-- Satellite crop segmentation -->
+        <article class="project-card" data-domains="agritech remote">
+          <div class="card-media satellite-card" role="img" aria-label="Satellite crop segmentation"></div>
+          <div class="card-body">
+            <p class="card-eyebrow">Remote Sensing <span class="dot"></span> AgriTech</p>
+            <h3>Satellite crop segmentation</h3>
+            <p>Field-boundary and crop segmentation across 21 agricultural sites from satellite imagery — delivered end-to-end, from dataset construction to model handoff.</p>
+            <div class="card-tags">
+              <span class="tag">Segmentation</span><span class="tag">Remote Sensing</span><span class="tag">PyTorch</span>
+            </div>
+            <div class="card-foot"><span class="soon">Case study in progress</span></div>
+          </div>
+        </article>
+
+        <!-- Padel match analytics -->
+        <article class="project-card" data-domains="sports cv">
+          <div class="card-media padel-card" role="img" aria-label="Padel match analytics"></div>
+          <div class="card-body">
+            <p class="card-eyebrow">Sports Analytics <span class="dot"></span> Broadcast</p>
+            <h3>Padel match analytics</h3>
+            <p>Player tracking with broadcast-style overlays: frosted-glass label capsules, EMA-smoothed stat connectors, and a real-time HUD rendered frame by frame.</p>
+            <div class="card-tags">
+              <span class="tag">Tracking</span><span class="tag">Broadcast</span><span class="tag">Real-time</span>
+            </div>
+            <div class="card-foot"><span class="soon">Case study in progress</span></div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="empty" hidden>No projects in this category yet.</p>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="socials">
+      <a href="https://github.com/Nassimos07" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.05.78 2.13v3.16c0 .3.21.67.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+      </a>
+      <a href="#" aria-label="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+      <a href="#" aria-label="Upwork">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.56 7.06c-1.88 0-3.31 1.24-3.94 3.22-.98-1.48-1.73-3.26-2.17-4.75H9.83v5.83c0 1.15-.94 2.09-2.09 2.09s-2.09-.94-2.09-2.09V5.53H3.06v5.84a4.68 4.68 0 0 0 4.67 4.68 4.69 4.69 0 0 0 4.68-4.68v-.98c.51 1.05 1.13 2.12 1.88 3.07l-1.6 7.52h2.65l1.16-5.45c1.01.65 2.18 1.06 3.52 1.06 2.86 0 5.19-2.34 5.19-5.21 0-2.86-2.33-5.32-5.19-5.32h.54zm0 7.87c-1.04 0-2.02-.44-2.91-1.16l.22-.9v-.04c.16-.92.67-2.47 2.24-2.47a2.29 2.29 0 0 1 2.29 2.29c0 1.26-1.03 2.28-2.29 2.28h.45z" transform="translate(-1.5,0)"/></svg>
+      </a>
+      <a href="mailto:hello@calibrx.io" aria-label="Email">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>
+      </a>
+    </div>
+    <span class="copy">© Nassim Hammami - All rights reserved</span>
+  </footer>
+
+</div>
+
+<!-- ============ FILTER (vanilla, no framework) ============ -->
+<script>
+  (function () {
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.project-card'));
+    var empty = document.querySelector('.empty');
+
+    // Fill each chip's count from the actual cards so labels never drift.
+    chips.forEach(function (chip) {
+      var key = chip.getAttribute('data-filter');
+      var n = key === 'all'
+        ? cards.length
+        : cards.filter(function (c) {
+            return c.getAttribute('data-domains').split(' ').indexOf(key) !== -1;
+          }).length;
+      var span = chip.querySelector('.count');
+      if (span) span.textContent = n;
+    });
+
+    function apply(key) {
+      var shown = 0;
+      cards.forEach(function (card) {
+        var match = key === 'all' ||
+          card.getAttribute('data-domains').split(' ').indexOf(key) !== -1;
+        card.hidden = !match;
+        if (match) shown++;
+      });
+      if (empty) empty.hidden = shown !== 0;
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        chips.forEach(function (c) {
+          c.classList.remove('is-active');
+          c.setAttribute('aria-selected', 'false');
+        });
+        chip.classList.add('is-active');
+        chip.setAttribute('aria-selected', 'true');
+        apply(chip.getAttribute('data-filter'));
+      });
+    });
+  })();
+</script>
+</body>
+</html>
