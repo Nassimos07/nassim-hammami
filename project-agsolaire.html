@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CalibrX — camera calibration platform | Nassim Hammami</title>
-<meta name="description" content="Case study: CalibrX turns camera calibration into a guided online workflow — intrinsics, distortion, and pose through an SDK/API flow. OpenCV core, FastAPI service, Docker on AWS. Live at calibrx.io.">
+<title>AgSolaire — seed weight estimation | Nassim Hammami</title>
+<meta name="description" content="Case study: AgSolaire-ML estimates seed-group weight non-invasively from a single high-resolution image — YOLOv5 detection (99.8% precision), SAM2 segmentation, nine morphological features, and XGBoost regression (69.15% within ±0.1 tolerance, MSE 0.0095).">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -246,13 +246,13 @@
     <header class="case-hero">
       <div>
         <a class="back-link" href="projects.html">← All projects</a>
-        <p class="eyebrow">Computer Vision Platform · Own product</p>
-        <h1>CalibrX — camera calibration</h1>
-        <p class="lede">Camera calibration turned into a <strong>guided online workflow</strong> — intrinsics, distortion, and pose measured through an SDK/API flow instead of weeks of research chores.</p>
+        <p class="eyebrow">AgriTech · Computer Vision · ML</p>
+        <h1>AgSolaire — seed weight estimation</h1>
+        <p class="lede">A non-invasive pipeline that <strong>weighs seed groups from a single high-resolution image</strong> — YOLOv5 detection, SAM2 segmentation, and nine morphological features feeding an XGBoost regressor.</p>
         <div class="meta-chips">
-          <span class="chip"><b>ROLE</b>Founder &amp; Engineer</span>
-          <span class="chip"><b>TYPE</b>Own product</span>
-          <span class="chip"><b>STATUS</b>Live · calibrx.io</span>
+          <span class="chip"><b>ROLE</b>ML Engineer</span>
+          <span class="chip"><b>CLIENT</b>AgSolaire</span>
+          <span class="chip"><b>STATUS</b>Delivered</span>
         </div>
         <div class="proj-links" aria-label="Project links">
           <span class="plink">
@@ -262,13 +262,13 @@
           </span>
           <span class="plink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg>
-            <span class="plabel">Product website</span>
-            <a href="https://calibrx.io" target="_blank" rel="noopener">calibrx.io</a>
+            <span class="plabel">Client website</span>
+            <span class="pna">Not available</span>
           </span>
         </div>
       </div>
-      <div class="case-media" aria-label="CalibrX calibration workflow">
-        <img src="calibrx-preview.jpg" alt="CalibrX guided calibration workflow — project setup step">
+      <div class="case-media" aria-label="AgSolaire-ML pipeline diagram">
+        <img src="agsolaire-preview.jpg" alt="AgSolaire-ML pipeline: YOLOv5 detection, SAM2 segmentation, morphological feature extraction, and XGBoost regression">
       </div>
     </header>
 
@@ -278,16 +278,16 @@
         <h2 class="panel-title" id="t-challenge">The challenge</h2>
         <div class="panel-list">
           <div class="p-item">
-            <h3>Everyone rebuilds it</h3>
-            <p>Teams burn weeks on patterns, capture protocols, and edge cases they never wanted to own.</p>
+            <h3>Weighing without a scale</h3>
+            <p>Seed-group weight had to be estimated non-invasively and automatically, from images alone.</p>
           </div>
           <div class="p-item">
-            <h3>Expertise bottleneck</h3>
-            <p>Getting intrinsics and distortion right takes camera-geometry experience few teams keep in-house.</p>
+            <h3>Pixels don't weigh anything</h3>
+            <p>Visual features strongly correlated with physical mass had to be found, measured, and validated.</p>
           </div>
           <div class="p-item">
-            <h3>Notebook ≠ product</h3>
-            <p>A reliable service with validation and repeatable runs is a different engineering problem.</p>
+            <h3>Dozens of tiny subjects</h3>
+            <p>Each frame holds a cluster of small seeds that must be isolated individually before measuring.</p>
           </div>
         </div>
       </section>
@@ -298,29 +298,29 @@
           <div class="step-item">
             <span class="num">01</span>
             <div>
-              <h3>Computer-vision engine</h3>
-              <p>OpenCV core: intrinsics, distortion coefficients, pose, undistortion, rectification.</p>
+              <h3>YOLOv5 seed detection</h3>
+              <p>Per-seed bounding boxes at 99.8% precision and 98.9% recall — each box becomes an ROI.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">02</span>
             <div>
-              <h3>Guided 8-step flow</h3>
-              <p>Setup → upload → pattern → parameters → validate → calibrate → undistort → rectify — each step gated.</p>
+              <h3>SAM2 segmentation</h3>
+              <p>Meta's SAM2 returns a pixel-accurate mask per seed — no task-specific training required.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">03</span>
             <div>
-              <h3>API-first service</h3>
-              <p>FastAPI wrapper so calibration runs through an SDK/API flow as easily as the UI.</p>
+              <h3>Morphological features</h3>
+              <p>Nine descriptors per seed — area, perimeter, length, width, circularity, elongation, IS, CG, DS — averaged per group.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">04</span>
             <div>
-              <h3>Cloud deployment</h3>
-              <p>Dockerized and deployed on AWS, sized for repeatable production runs.</p>
+              <h3>XGBoost regression</h3>
+              <p>The feature vector maps to predicted group weight, trained on samples with known weights.</p>
             </div>
           </div>
         </div>
@@ -330,19 +330,19 @@
         <h2 class="panel-title" id="t-outcomes">Outcomes</h2>
         <div class="panel-list">
           <div class="p-item">
-            <span class="o-num">Live</span>
-            <h3>Shipping in production</h3>
-            <p>The platform is live and serving at calibrx.io.</p>
+            <span class="o-num">99.4%</span>
+            <h3>Detection mAP@0.5</h3>
+            <p>YOLOv5 — 99.8% precision, 98.9% recall on seeds.</p>
           </div>
           <div class="p-item">
-            <span class="o-num">8 steps</span>
-            <h3>Guided workflow</h3>
-            <p>From project setup to rectified output, gated at every step.</p>
+            <span class="o-num">9 features</span>
+            <h3>Morphology engine</h3>
+            <p>Geometric descriptors computed from SAM2 masks.</p>
           </div>
           <div class="p-item">
-            <span class="o-num">API-first</span>
-            <h3>SDK access</h3>
-            <p>Every calibration available programmatically.</p>
+            <span class="o-num">69.15%</span>
+            <h3>Within ±0.1 tolerance</h3>
+            <p>139 of 201 test samples — MSE 0.0095.</p>
           </div>
         </div>
       </section>
@@ -352,18 +352,18 @@
     <div class="case-foot">
       <div class="stack-line">
         <span class="stack-label">Stack</span>
-        <span class="tag">OpenCV</span>
+        <span class="tag">YOLOv5</span>
+        <span class="tag">SAM2</span>
+        <span class="tag">XGBoost</span>
         <span class="tag">Python</span>
-        <span class="tag">Camera geometry</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag">SDK / API</span>
-        <span class="tag">Docker</span>
-        <span class="tag">AWS</span>
+        <span class="tag">Feature engineering</span>
+        <span class="tag">Morphometrics</span>
+        <span class="tag">Regression</span>
       </div>
       <div class="foot-links">
-        <a href="project-agsolaire.html"><span class="mono">←</span> AgSolaire</a>
+        <a href="project-moving-stopped-persons.html"><span class="mono">←</span> Moving / Stopped</a>
         <a href="https://calendly.com/nassimhammemiwork/ml-computer-vision-project-call" target="_blank" rel="noopener">Book a call</a>
-        <a href="project-emgenisys.html">Emgenisys <span class="mono">→</span></a>
+        <a href="project-calibrx.html">CalibrX <span class="mono">→</span></a>
       </div>
     </div>
 
