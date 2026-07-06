@@ -144,6 +144,9 @@
     letter-spacing:.18em;text-transform:uppercase;color:var(--gray-text);
     margin-bottom:12px;
   }
+  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;}
+  .panel-head .panel-title{margin-bottom:0;}
+  .panel-face{width:42px;height:42px;object-fit:contain;flex-shrink:0;display:block;}
   .panel-list{display:flex;flex-direction:column;gap:10px;flex:1;justify-content:space-evenly;}
   .p-item h3{font-size:13.5px;font-weight:600;letter-spacing:-0.01em;line-height:1.25;}
   .p-item p{color:var(--gray-text);font-size:12px;line-height:1.45;}
@@ -275,7 +278,10 @@
     <div class="case-grid">
 
       <section class="panel panel-red" aria-labelledby="t-challenge">
-        <h2 class="panel-title" id="t-challenge">The challenge</h2>
+        <div class="panel-head">
+          <h2 class="panel-title" id="t-challenge">The challenge</h2>
+          <img class="panel-face" src="notion-challenge.png" alt="" aria-hidden="true">
+        </div>
         <div class="panel-list">
           <div class="p-item">
             <h3>No dataset existed</h3>
@@ -293,7 +299,10 @@
       </section>
 
       <section class="panel panel-green" aria-labelledby="t-approach">
-        <h2 class="panel-title" id="t-approach">The approach</h2>
+        <div class="panel-head">
+          <h2 class="panel-title" id="t-approach">The approach</h2>
+          <img class="panel-face" src="notion-approach.png" alt="" aria-hidden="true">
+        </div>
         <div class="panel-list">
           <div class="step-item">
             <span class="num">01</span>
