@@ -192,6 +192,9 @@
   }
   .card.satellite-card{--preview:url("satellite-preview.jpg");}
   .card.padel-card{--preview:url("padel-preview.jpg");}
+  .card.crackfinder-card{--preview:url("crackfinder-preview.jpg");}
+  .card.agsolaire-card{--preview:url("agsolaire-preview.jpg");}
+  .card.pathology-card{--preview:url("pathology-preview.jpg");}
   .card.moving-stopped-card{--preview:
     radial-gradient(circle at 18% 34%, #0d0d0d 0 5px, transparent 6px),
     radial-gradient(circle at 34% 54%, #0d0d0d 0 5px, transparent 6px),
@@ -550,7 +553,7 @@
     <div class="section-head">
       <div>
         <h2>Selected work</h2>
-        <p class="section-sub">Production computer vision across medical imaging, agriculture, satellites, and sports</p>
+        <p class="section-sub">Production computer vision across medical imaging, agriculture, sports, and video analytics</p>
       </div>
       <a class="see-all" href="projects.html">See all projects</a>
     </div>
@@ -590,16 +593,40 @@
         </div>
       </article>
 
-      <article class="card calibrx-card" data-href="project-calibrx.html" tabindex="0" role="link" aria-label="Open CalibrX case study">
+      <article class="card pathology-card" data-href="project-pathology.html" tabindex="0" role="link" aria-label="Open Pathology artifact segmentation case study">
         <div class="card-top">
           <div class="card-icon">
-            <svg width="40" height="40" viewBox="0 0 48 48"><circle cx="24" cy="24" r="15" class="doodle-thin"/><circle cx="24" cy="24" r="2.8" fill="#0d0d0d"/><path class="doodle-thin" d="M24 4 v10 M24 34 v10 M4 24 h10 M34 24 h10"/><path class="doodle-thin" d="M13 13 l5 5 M35 13 l-5 5 M13 35 l5-5 M35 35 l-5-5"/></svg>
+            <svg width="40" height="40" viewBox="0 0 48 48"><rect x="10" y="12" width="28" height="24" rx="5" class="doodle-thin"/><path class="doodle-thin" d="M16 20 h16 M16 26 h10 M16 32 h14"/><circle cx="34" cy="18" r="2.5" fill="#0d0d0d"/></svg>
           </div>
-          <span class="tag">OpenCV · FastAPI · AWS</span>
+          <span class="tag">YOLO11x-seg · pathology</span>
         </div>
-        <h3>CalibrX — camera calibration</h3>
-        <p>Camera calibration as a service: intrinsics, distortion, and pose measured through an SDK/API flow instead of weeks of research chores</p>
-        <a class="discover" href="project-calibrx.html">Read more</a>
+        <h3>Pathology artifact segmentation</h3>
+        <p>Instance segmentation of 11 artifact types in whole-slide pathology images, rebuilt with YOLO11x-seg to beat the client baseline</p>
+        <a class="discover" href="project-pathology.html">Read more</a>
+      </article>
+
+      <article class="card padel-card" data-href="project-padel.html" tabindex="0" role="link" aria-label="Open Padel match analytics case study">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg width="40" height="40" viewBox="0 0 48 48"><circle cx="17" cy="15" r="5" class="doodle-thin"/><path class="doodle-thin" d="M17 20 l-2 12 l-5 8 M15 32 l8 7 M17 22 l10 4 l7 -5"/><circle cx="37" cy="33" r="3.4" class="doodle-thin"/></svg>
+          </div>
+          <span class="tag">tracking · broadcast</span>
+        </div>
+        <h3>Padel match analytics</h3>
+        <p>Player tracking with broadcast-style overlays, frosted-glass label capsules, EMA-smoothed stat connectors, and a real-time HUD</p>
+        <a class="discover" href="project-padel.html">Read more</a>
+      </article>
+
+      <article class="card crackfinder-card" data-href="project-crackfinder.html" tabindex="0" role="link" aria-label="Open CrackFinder equestrian analysis case study">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg width="40" height="40" viewBox="0 0 48 48"><path class="doodle-thin" d="M9 30 c 5 -8, 12 -12, 22 -10 l7 5 M18 29 l-4 11 M31 29 l5 11 M29 18 l3 -7 l5 8"/><circle cx="36" cy="19" r="2" fill="#0d0d0d"/></svg>
+          </div>
+          <span class="tag">SAM3 · 3D vision</span>
+        </div>
+        <h3>CrackFinder — equestrian analysis</h3>
+        <p>Computer-vision pipeline for automated equestrian performance analysis, combining segmentation, motion recognition, and 3D vision</p>
+        <a class="discover" href="project-crackfinder.html">Read more</a>
       </article>
 
       <article class="card boveye-card" data-href="project-boveye.html" tabindex="0" role="link" aria-label="Open BovEye case study">
@@ -614,30 +641,6 @@
         <a class="discover" href="project-boveye.html">Read more</a>
       </article>
 
-      <article class="card satellite-card" data-href="project-satellite.html" tabindex="0" role="link" aria-label="Open Satellite crop segmentation case study">
-        <div class="card-top">
-          <div class="card-icon">
-            <svg width="40" height="40" viewBox="0 0 48 48"><rect x="14" y="14" width="20" height="20" rx="3" class="doodle-thin"/><path class="doodle-thin" d="M14 21 h20 M14 28 h20 M21 14 v20 M28 14 v20"/><path class="doodle-thin" d="M8 8 l4 4 M40 8 l-4 4 M8 40 l4 -4 M40 40 l-4 -4"/></svg>
-          </div>
-          <span class="tag">segmentation</span>
-        </div>
-        <h3>Satellite crop segmentation</h3>
-        <p>Field-boundary and crop segmentation across 21 agricultural sites from satellite imagery — delivered end-to-end, from dataset construction to model handoff</p>
-        <a class="discover" href="project-satellite.html">Read more</a>
-      </article>
-
-      <article class="card padel-card" data-href="project-padel.html" tabindex="0" role="link" aria-label="Open Padel match analytics case study">
-        <div class="card-top">
-          <div class="card-icon">
-            <svg width="40" height="40" viewBox="0 0 48 48"><circle cx="17" cy="15" r="5" class="doodle-thin"/><path class="doodle-thin" d="M17 20 l-2 12 l-5 8 M15 32 l8 7 M17 22 l10 4 l7 -5"/><circle cx="37" cy="33" r="3.4" class="doodle-thin"/></svg>
-          </div>
-          <span class="tag">tracking · broadcast</span>
-        </div>
-        <h3>Padel match analytics</h3>
-        <p>Player tracking with broadcast-style overlays: frosted-glass label capsules, EMA-smoothed stat connectors, and a real-time HUD rendered frame by frame</p>
-        <a class="discover" href="project-padel.html">Read more</a>
-      </article>
-
       <article class="card moving-stopped-card" data-href="project-moving-stopped-persons.html" tabindex="0" role="link" aria-label="Open Moving / Stopped Persons Detection case study">
         <div class="card-top">
           <div class="card-icon">
@@ -648,6 +651,18 @@
         <h3>Moving / Stopped Persons Detection</h3>
         <p>Real-time and post-event human movement analysis that classifies people as moving, stopped, or under-processing for security-focused video analytics</p>
         <a class="discover" href="project-moving-stopped-persons.html">Read more</a>
+      </article>
+
+      <article class="card agsolaire-card" data-href="project-agsolaire.html" tabindex="0" role="link" aria-label="Open AgSolaire seed weight estimation case study">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg width="40" height="40" viewBox="0 0 48 48"><path class="doodle-thin" d="M14 31 c 6 -13, 17 -18, 25 -18 c -1 11 -8 22 -25 18 z"/><path class="doodle-thin" d="M14 31 c 7 -5, 14 -9, 25 -18 M12 38 h26"/><circle cx="18" cy="20" r="2" fill="#0d0d0d"/></svg>
+          </div>
+          <span class="tag">YOLOv5 · SAM2 · XGBoost</span>
+        </div>
+        <h3>AgSolaire — seed weight estimation</h3>
+        <p>Non-invasive seed-group weighing from a single image using detection, segmentation, morphology features, and an XGBoost regressor</p>
+        <a class="discover" href="project-agsolaire.html">Read more</a>
       </article>
 
     </div>
