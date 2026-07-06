@@ -165,6 +165,15 @@
     radial-gradient(circle at 50% 50%, transparent 0 26px, rgba(255,255,255,.5) 26px 27px, transparent 28px),
     linear-gradient(135deg,#4d7fae,#3a6390);
   }
+  .moving-stopped-card{--preview:
+    radial-gradient(circle at 18% 34%, #0d0d0d 0 5px, transparent 6px),
+    radial-gradient(circle at 34% 54%, #0d0d0d 0 5px, transparent 6px),
+    radial-gradient(circle at 58% 38%, #cfcfcf 0 5px, transparent 6px),
+    radial-gradient(circle at 76% 62%, #8f8f8f 0 5px, transparent 6px),
+    linear-gradient(90deg, transparent 0 18%, rgba(13,13,13,.22) 18% 19%, transparent 19% 34%, rgba(13,13,13,.22) 34% 35%, transparent 35% 58%, rgba(13,13,13,.16) 58% 59%, transparent 59%),
+    linear-gradient(0deg, transparent 0 48%, rgba(13,13,13,.08) 48% 49%, transparent 49%),
+    linear-gradient(135deg,#f8f8f8,#e4e4e4);
+  }
 
   .card-body{
     display:flex;flex-direction:column;gap:10px;
@@ -268,6 +277,7 @@
         <button class="chip" role="tab" aria-selected="false" data-filter="agritech">AgriTech <span class="count"></span></button>
         <button class="chip" role="tab" aria-selected="false" data-filter="medical">Medical <span class="count"></span></button>
         <button class="chip" role="tab" aria-selected="false" data-filter="sports">Sports <span class="count"></span></button>
+        <button class="chip" role="tab" aria-selected="false" data-filter="security">Security AI <span class="count"></span></button>
         <button class="chip" role="tab" aria-selected="false" data-filter="remote">Remote Sensing <span class="count"></span></button>
       </div>
     </header>
@@ -357,6 +367,20 @@
               <span class="tag">YOLOv11</span><span class="tag">Roboflow</span><span class="tag">cv2.fisheye</span><span class="tag">Heatmaps</span>
             </div>
             <div class="card-foot"><a class="discover" href="project-hockey.html">Read more →</a></div>
+          </div>
+        </article>
+
+        <!-- Moving / Stopped Persons Detection -->
+        <article class="project-card" data-domains="cv security">
+          <a class="card-media moving-stopped-card" href="project-moving-stopped-persons.html" aria-label="Moving / Stopped Persons Detection case study"></a>
+          <div class="card-body">
+            <p class="card-eyebrow">Security AI <span class="dot"></span> Human movement</p>
+            <h3><a href="project-moving-stopped-persons.html">Moving / Stopped Persons Detection</a></h3>
+            <p>Open-source real-time and post-event human movement analysis, classifying people as moving, stopped, or under-processing with YOLO and Roboflow Supervision.</p>
+            <div class="card-tags">
+              <span class="tag">YOLOv8</span><span class="tag">YOLOv10</span><span class="tag">Supervision</span><span class="tag">Motion Analysis</span>
+            </div>
+            <div class="card-foot"><a class="discover" href="project-moving-stopped-persons.html">Read more →</a></div>
           </div>
         </article>
 

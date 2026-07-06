@@ -190,6 +190,15 @@
   }
   .card.satellite-card{--preview:url("satellite-preview.jpg");}
   .card.padel-card{--preview:url("padel-preview.jpg");}
+  .card.moving-stopped-card{--preview:
+    radial-gradient(circle at 18% 34%, #0d0d0d 0 5px, transparent 6px),
+    radial-gradient(circle at 34% 54%, #0d0d0d 0 5px, transparent 6px),
+    radial-gradient(circle at 58% 38%, #cfcfcf 0 5px, transparent 6px),
+    radial-gradient(circle at 76% 62%, #8f8f8f 0 5px, transparent 6px),
+    linear-gradient(90deg, transparent 0 18%, rgba(13,13,13,.22) 18% 19%, transparent 19% 34%, rgba(13,13,13,.22) 34% 35%, transparent 35% 58%, rgba(13,13,13,.16) 58% 59%, transparent 59%),
+    linear-gradient(0deg, transparent 0 48%, rgba(13,13,13,.08) 48% 49%, transparent 49%),
+    linear-gradient(135deg,#f8f8f8,#e4e4e4);
+  }
   .card:hover{transform:translateY(-5px);border-color:#d8d8d5;box-shadow:0 20px 45px rgba(0,0,0,.08);}
   .card:focus-visible,
   .feat:focus-visible{outline:3px solid #bbb;outline-offset:4px;}
@@ -623,6 +632,18 @@
         <h3>Padel match analytics</h3>
         <p>Player tracking with broadcast-style overlays: frosted-glass label capsules, EMA-smoothed stat connectors, and a real-time HUD rendered frame by frame</p>
         <a class="discover" href="project-padel.html">Read more</a>
+      </article>
+
+      <article class="card moving-stopped-card" data-href="project-moving-stopped-persons.html" tabindex="0" role="link" aria-label="Open Moving / Stopped Persons Detection case study">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg width="40" height="40" viewBox="0 0 48 48"><circle cx="14" cy="17" r="4" class="doodle-thin"/><circle cx="34" cy="17" r="4" class="doodle-thin"/><path class="doodle-thin" d="M14 21 v13 M9 28 h10 M34 21 v13 M29 34 h10 M21 18 h6 M24 18 v13"/><path class="doodle-thin" d="M7 39 h14 M27 39 h14"/></svg>
+          </div>
+          <span class="tag">YOLOv8 · Supervision</span>
+        </div>
+        <h3>Moving / Stopped Persons Detection</h3>
+        <p>Real-time and post-event human movement analysis that classifies people as moving, stopped, or under-processing for security-focused video analytics</p>
+        <a class="discover" href="project-moving-stopped-persons.html">Read more</a>
       </article>
 
     </div>
