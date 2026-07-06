@@ -264,7 +264,7 @@
   }
   .feat-tags{display:flex;flex-wrap:wrap;gap:7px;}
   .card > *{position:relative;z-index:1;}
-  .card-top{order:3;display:flex;align-items:center;justify-content:flex-start;gap:10px;margin-top:0;padding:7px 16px 0;}
+  .card-top{order:3;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding:10px 16px 16px;}
   .card-icon{
     display:none;
   }
@@ -275,7 +275,7 @@
   }
   .card h3{order:1;font-weight:600;font-size:17px;line-height:1.12;letter-spacing:-0.01em;padding:14px 16px 0;}
   .card p{order:2;color:var(--gray-text);font-size:12.4px;line-height:1.34;padding:7px 16px 0;}
-  .card .discover{order:4;margin:auto 16px 16px;padding-top:10px;align-self:flex-start;font-size:13.5px;}
+  .card .discover{margin:0;align-self:center;font-size:13px;white-space:nowrap;}
 
   /* ============ ABOUT ============ */
   .about{
@@ -400,7 +400,7 @@
     .feat-stats{gap:22px;}
     .card::before{width:100%;height:auto;border-radius:0;}
     .card::after{left:0;right:0;top:0;bottom:auto;width:auto;height:auto;border-radius:0;}
-    .card-top{align-items:flex-start;}
+    .card-top{align-items:center;}
     .tag{white-space:normal;text-align:left;}
     .contact-links{gap:14px;}
     .contact-card{min-height:44px;padding:6px 2px;}
@@ -591,10 +591,10 @@
             <svg width="40" height="40" viewBox="0 0 48 48"><rect x="10" y="12" width="28" height="24" rx="5" class="doodle-thin"/><path class="doodle-thin" d="M16 20 h16 M16 26 h10 M16 32 h14"/><circle cx="34" cy="18" r="2.5" fill="#0d0d0d"/></svg>
           </div>
           <span class="tag">YOLO11x-seg · pathology</span>
+          <a class="discover" href="project-pathology.html">Read more</a>
         </div>
         <h3>Pathology artifact segmentation</h3>
         <p>Instance segmentation of 11 artifact types in whole-slide pathology images, rebuilt with YOLO11x-seg to beat the client baseline</p>
-        <a class="discover" href="project-pathology.html">Read more</a>
       </article>
 
       <article class="card padel-card" data-href="project-padel.html" tabindex="0" role="link" aria-label="Open Padel match analytics case study">
@@ -603,10 +603,10 @@
             <svg width="40" height="40" viewBox="0 0 48 48"><circle cx="17" cy="15" r="5" class="doodle-thin"/><path class="doodle-thin" d="M17 20 l-2 12 l-5 8 M15 32 l8 7 M17 22 l10 4 l7 -5"/><circle cx="37" cy="33" r="3.4" class="doodle-thin"/></svg>
           </div>
           <span class="tag">tracking · broadcast</span>
+          <a class="discover" href="project-padel.html">Read more</a>
         </div>
         <h3>Padel match analytics</h3>
         <p>Player tracking with broadcast-style overlays, frosted-glass label capsules, EMA-smoothed stat connectors, and a real-time HUD</p>
-        <a class="discover" href="project-padel.html">Read more</a>
       </article>
 
       <article class="card crackfinder-card" data-href="project-crackfinder.html" tabindex="0" role="link" aria-label="Open CrackFinder equestrian analysis case study">
@@ -615,10 +615,10 @@
             <svg width="40" height="40" viewBox="0 0 48 48"><path class="doodle-thin" d="M9 30 c 5 -8, 12 -12, 22 -10 l7 5 M18 29 l-4 11 M31 29 l5 11 M29 18 l3 -7 l5 8"/><circle cx="36" cy="19" r="2" fill="#0d0d0d"/></svg>
           </div>
           <span class="tag">SAM3 · 3D vision</span>
+          <a class="discover" href="project-crackfinder.html">Read more</a>
         </div>
         <h3>CrackFinder — equestrian analysis</h3>
         <p>Computer-vision pipeline for automated equestrian performance analysis, combining segmentation, motion recognition, and 3D vision</p>
-        <a class="discover" href="project-crackfinder.html">Read more</a>
       </article>
 
       <article class="card boveye-card" data-href="project-boveye.html" tabindex="0" role="link" aria-label="Open BovEye case study">
@@ -627,10 +627,10 @@
             <svg width="40" height="40" viewBox="0 0 48 48"><path class="doodle-thin" d="M12 28 c 0 -7, 7 -12, 13 -10 c 2 -5, 11 -5, 13 0 c 6 -2, 13 3, 13 10 c 0 9, -9 15, -19.5 15 c -10.5 0, -19.5 -6, -19.5 -15 z"/><circle cx="26" cy="30" r="1.8" fill="#0d0d0d"/><circle cx="37" cy="30" r="1.8" fill="#0d0d0d"/><path class="doodle-thin" d="M8 20 l-4 -5 M55 20 l4 -5" transform="translate(-4,0)"/></svg>
           </div>
           <span class="tag">RF-DETR · multispectral</span>
+          <a class="discover" href="project-boveye.html">Read more</a>
         </div>
         <h3>BovEye — cattle detection</h3>
         <p>4-channel RGBN detection pipeline for aerial livestock monitoring: patch-embedding surgery, calibrated band normalization, and threshold-sweep evaluation dashboards</p>
-        <a class="discover" href="project-boveye.html">Read more</a>
       </article>
 
       <article class="card moving-stopped-card" data-href="project-moving-stopped-persons.html" tabindex="0" role="link" aria-label="Open Moving / Stopped Persons Detection case study">
@@ -639,10 +639,10 @@
             <svg width="40" height="40" viewBox="0 0 48 48"><circle cx="14" cy="17" r="4" class="doodle-thin"/><circle cx="34" cy="17" r="4" class="doodle-thin"/><path class="doodle-thin" d="M14 21 v13 M9 28 h10 M34 21 v13 M29 34 h10 M21 18 h6 M24 18 v13"/><path class="doodle-thin" d="M7 39 h14 M27 39 h14"/></svg>
           </div>
           <span class="tag">YOLOv8 · Supervision</span>
+          <a class="discover" href="project-moving-stopped-persons.html">Read more</a>
         </div>
         <h3>Moving / Stopped Persons Detection</h3>
         <p>Real-time and post-event human movement analysis that classifies people as moving, stopped, or under-processing for security-focused video analytics</p>
-        <a class="discover" href="project-moving-stopped-persons.html">Read more</a>
       </article>
 
       <article class="card agsolaire-card" data-href="project-agsolaire.html" tabindex="0" role="link" aria-label="Open AgSolaire seed weight estimation case study">
@@ -651,10 +651,10 @@
             <svg width="40" height="40" viewBox="0 0 48 48"><path class="doodle-thin" d="M14 31 c 6 -13, 17 -18, 25 -18 c -1 11 -8 22 -25 18 z"/><path class="doodle-thin" d="M14 31 c 7 -5, 14 -9, 25 -18 M12 38 h26"/><circle cx="18" cy="20" r="2" fill="#0d0d0d"/></svg>
           </div>
           <span class="tag">YOLOv5 · SAM2 · XGBoost</span>
+          <a class="discover" href="project-agsolaire.html">Read more</a>
         </div>
         <h3>AgSolaire — seed weight estimation</h3>
         <p>Non-invasive seed-group weighing from a single image using detection, segmentation, morphology features, and an XGBoost regressor</p>
-        <a class="discover" href="project-agsolaire.html">Read more</a>
       </article>
 
     </div>
