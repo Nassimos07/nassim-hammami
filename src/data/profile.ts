@@ -57,13 +57,13 @@ export const profile = {
     },
     {
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/nassim-hammami',
+      href: 'https://www.linkedin.com/in/nassim-hammami-771015217',
       handle: 'Nassim Hammami',
       icon: 'linkedin',
     },
     {
       label: 'Upwork',
-      href: 'https://www.upwork.com/freelancers/nassimhammami',
+      href: 'https://www.upwork.com/freelancers/~013cf1e92a2b62e552',
       handle: 'Nassim Hammami',
       icon: 'upwork',
     },
