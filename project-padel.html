@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Padel match analytics | Nassim Hammami</title>
-<meta name="description" content="Case study: real-time padel player tracking with broadcast-style overlays — per-player distance, speed, and work rate, EMA-smoothed stats, and a frame-by-frame HUD with court-space mapping.">
+<title>Padel Vision — match analytics | Nassim Hammami</title>
+<meta name="description" content="Case study: Padel Vision v2 turns a single padel recording into broadcast-style analytics with RF-DETR player segmentation, ByteTrack IDs, homography-based 2D tactical maps, heatmaps, distance, speed, and work-rate metrics.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -252,24 +252,19 @@
     <header class="case-hero">
       <div>
         <a class="back-link" href="projects.html">← All projects</a>
-        <p class="eyebrow">Sports Analytics · Broadcast</p>
+        <p class="eyebrow">Sports Analytics · Padel Vision v2</p>
         <h1>Padel match analytics</h1>
-        <p class="lede">Player tracking with <strong>broadcast-style overlays</strong> — distance, speed, and work rate computed live and rendered frame by frame into a clean, watchable HUD.</p>
+        <p class="lede"><strong>Padel Vision v2</strong> turns a single game recording into broadcast-style analytics: the live match view, stable player tracking, and a real-time 2D tactical map drawn to the court's real 10 m × 20 m scale.</p>
         <div class="meta-chips">
           <span class="chip"><b>ROLE</b>CV Engineer</span>
-          <span class="chip"><b>TYPE</b>Broadcast analytics</span>
+          <span class="chip"><b>TYPE</b>Open source project</span>
           <span class="chip"><b>STATUS</b>Delivered</span>
         </div>
         <div class="proj-links" aria-label="Project links">
           <span class="plink">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.05.78 2.13v3.16c0 .3.21.67.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
             <span class="plabel">GitHub</span>
-            <span class="pna">Confidential</span>
-          </span>
-          <span class="plink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg>
-            <span class="plabel">Client website</span>
-            <span class="pna">Not available</span>
+            <a href="https://github.com/Nassimos07/padel-vision" target="_blank" rel="noopener">padel-vision</a>
           </span>
         </div>
       </div>
@@ -289,16 +284,16 @@
         <h2 class="panel-title" id="t-challenge">The challenge</h2>
         <div class="panel-list">
           <div class="p-item">
-            <h3>Four players, one glass box</h3>
-            <p>Reflections and fast crossovers make identity swaps the default failure mode.</p>
+            <h3>One recording, many signals</h3>
+            <p>The pipeline has to extract players, identities, positions, and tactical context from a single match video.</p>
           </div>
           <div class="p-item">
-            <h3>Raw stats jitter</h3>
-            <p>Per-frame estimates are noisy — broadcast numbers must move like they were measured.</p>
+            <h3>Real metrics, not pixels</h3>
+            <p>Padel stats only become meaningful when image positions are projected into the fixed 10 m × 20 m court.</p>
           </div>
           <div class="p-item">
-            <h3>Broadcast-grade rendering</h3>
-            <p>Capsules and connectors rendered frame by frame without cooking the frame rate.</p>
+            <h3>Glass-wall dynamics</h3>
+            <p>Future ball and shot detection must handle wall bounces, where simple tennis-style velocity changes are not enough.</p>
           </div>
         </div>
       </section>
@@ -309,29 +304,29 @@
           <div class="step-item">
             <span class="num">01</span>
             <div>
-              <h3>Detection &amp; tracking</h3>
-              <p>Per-player identity held through occlusions and crossovers — the foundation of every stat.</p>
+              <h3>RF-DETR player segmentation</h3>
+              <p>One Roboflow RF-DETR model returns both player boxes and per-player masks for the live match view.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">02</span>
             <div>
-              <h3>Physical stats engine</h3>
-              <p>Distance, average speed, and work rate — EMA-smoothed for stable on-screen readouts.</p>
+              <h3>ByteTrack stable IDs</h3>
+              <p>Multi-player tracking with ByteTrack, smoothing, and stable player IDs keeps the analytics connected over time.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">03</span>
             <div>
-              <h3>Broadcast HUD</h3>
-              <p>Frosted-glass capsules, stat connectors, and speed badges rendered into the video.</p>
+              <h3>Homography tactical map</h3>
+              <p>Court calibration projects players' feet into a 2D court map, converting pixels into real-world metres.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">04</span>
             <div>
-              <h3>Court-space mapping</h3>
-              <p>Positions projected to a top-down court map with zone heat for tactical review.</p>
+              <h3>OpenCV rendering pipeline</h3>
+              <p>OpenCV, NumPy, and Supervision render the broadcast view, tactical map, heatmaps, and live metrics.</p>
             </div>
           </div>
         </div>
@@ -341,19 +336,19 @@
         <h2 class="panel-title" id="t-outcomes">Outcomes</h2>
         <div class="panel-list">
           <div class="p-item">
-            <span class="o-num">Real-time</span>
-            <h3>Frame-by-frame HUD</h3>
-            <p>Overlays rendered live over the footage.</p>
+            <span class="o-num">2 views</span>
+            <h3>Match + tactical map</h3>
+            <p>Live footage paired with a scaled 2D court view.</p>
           </div>
           <div class="p-item">
-            <span class="o-num">4 players</span>
-            <h3>Stable identities</h3>
-            <p>Tracking that survives crossovers and reflections.</p>
+            <span class="o-num">4 metrics</span>
+            <h3>Player analytics</h3>
+            <p>Heatmaps, distance, average speed, and work rate.</p>
           </div>
           <div class="p-item">
-            <span class="o-num">Court-space</span>
-            <h3>Tactical view</h3>
-            <p>Top-down positional mapping with zone heat.</p>
+            <span class="o-num">Next</span>
+            <h3>Richer match intelligence</h3>
+            <p>TrackNet-style ball trajectory, shot detection, pose keypoints, and a full tactical dashboard.</p>
           </div>
         </div>
       </section>
@@ -363,12 +358,12 @@
     <div class="case-foot">
       <div class="stack-line">
         <span class="stack-label">Stack</span>
-        <span class="tag">Detection</span>
-        <span class="tag">Multi-object tracking</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">EMA smoothing</span>
-        <span class="tag">Court homography</span>
-        <span class="tag">Broadcast overlays</span>
+        <span class="tag">RF-DETR</span>
+        <span class="tag">Roboflow</span>
+        <span class="tag">ByteTrack</span>
+        <span class="tag">Homography</span>
+        <span class="tag">Supervision</span>
+        <span class="tag">NumPy</span>
         <span class="tag">OpenCV</span>
       </div>
       <div class="foot-links">
