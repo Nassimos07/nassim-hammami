@@ -19,6 +19,7 @@
     --line:#e9e9e9;
     --radius:18px;
     --footer-h:54px;
+    --verified-icon:url("verified-check.jpg");
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -84,6 +85,11 @@
   h1{
     font-weight:700;font-size:clamp(24px,2.3vw,32px);
     line-height:1.08;letter-spacing:-0.02em;margin-bottom:8px;
+  }
+  h1::after{
+    content:"";display:inline-block;width:.72em;height:.72em;
+    margin-left:.28em;vertical-align:-.06em;
+    background:var(--verified-icon) center/contain no-repeat;
   }
   .lede{
     color:var(--gray-text);font-size:13.5px;line-height:1.5;
