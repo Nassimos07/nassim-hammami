@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emgenisys — embryo classification | Nassim Hammami</title>
-<meta name="description" content="Case study: a multi-module deep-learning platform that turns a 30-second embryo time-lapse clip into grade, stage, sex, and pregnancy predictions — 99% detection & tracking, 4 models in production.">
+<title>Bovine Embryo Health Assessment — Multi-Model | Nassim Hammami</title>
+<meta name="description" content="Case study: a multi-model bovine embryo health assessment platform for grade, stage, pregnancy, and sex prediction from 30-second time-lapse clips.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,8 +248,8 @@
       <div>
         <a class="back-link" href="projects.html">← All projects</a>
         <p class="eyebrow">Medical / AgriTech · USA</p>
-        <h1>Emgenisys — embryo classification</h1>
-        <p class="lede">An AI embryo-assessment platform: a <strong>30-second time-lapse clip</strong> goes in — viability, grade, stage, sex, and pregnancy prediction come out, with the evaluation rigor to run in production.</p>
+        <h1>Bovine Embryo Health Assessment — Multi-Model</h1>
+        <p class="lede">An AI embryo-assessment platform for <strong>grade, stage, pregnancy, and sex prediction</strong>: a 30-second time-lapse clip goes in, and a production-ready health assessment comes out.</p>
         <div class="meta-chips">
           <span class="chip"><b>ROLE</b>ML Lead</span>
           <span class="chip"><b>CLIENT</b>Emgenisys · USA</span>
@@ -261,11 +261,11 @@
             <span class="plabel">GitHub</span>
             <span class="pna">Confidential</span>
           </span>
-          <span class="plink">
+          <a class="plink" href="https://www.emgenisys.co/" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg>
             <span class="plabel">Client website</span>
-            <span class="pna">Not available</span>
-          </span>
+            <span class="pna">emgenisys.co</span>
+          </a>
         </div>
       </div>
       <div class="case-media" aria-label="Emgenisys embryo analysis video">
@@ -285,8 +285,8 @@
         <h2 class="panel-title" id="t-challenge">The challenge</h2>
         <div class="panel-list">
           <div class="p-item">
-            <h3>Subjective ground truth</h3>
-            <p>Expert grades disagree — models must absorb label noise without learning the bias.</p>
+            <h3>Low expert agreement</h3>
+            <p>Emgenisys research found that embryologists agreed on embryo stage only 59% on average; even highly experienced embryologists with 10+ years reached just 74.6% agreement.</p>
           </div>
           <div class="p-item">
             <h3>Tiny, drifting subjects</h3>
@@ -312,22 +312,22 @@
           <div class="step-item">
             <span class="num">02</span>
             <div>
-              <h3>Temporal prediction modules</h3>
-              <p>CNN + LSTM models read the whole clip — one module each for grade, stage, sex, and pregnancy.</p>
+              <h3>Spatial &amp; temporal pattern recognition</h3>
+              <p>The system analyzes morphology, motion, and change across the clip, combining frame-level visual cues with temporal patterns that are difficult to judge consistently by eye.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">03</span>
             <div>
-              <h3>Calibration-aware training</h3>
-              <p>Custom losses so a model reporting 82% viability is right about as often as it claims.</p>
+              <h3>Goal-specific model design</h3>
+              <p>Each model is designed around its primary goal — grade, stage, pregnancy, or sex — so the training objective, labels, and evaluation logic match the decision the model must support.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">04</span>
             <div>
-              <h3>Evaluation analytics &amp; MLOps</h3>
-              <p>MLflow experiments, go/no-go evaluation analytics, shipped through CI/CD.</p>
+              <h3>Calibration-aware evaluation &amp; MLOps</h3>
+              <p>Custom evaluation analytics, MLflow experiments, and CI/CD checks helped turn research models into approved production components.</p>
             </div>
           </div>
         </div>
@@ -361,7 +361,7 @@
       <div class="stack-line">
         <span class="stack-label">Stack</span>
         <span class="tag">PyTorch</span>
-        <span class="tag">CNN + LSTM</span>
+        <span class="tag">Spatial-temporal ML</span>
         <span class="tag">Detection</span>
         <span class="tag">Tracking</span>
         <span class="tag">Fine-tuning</span>
