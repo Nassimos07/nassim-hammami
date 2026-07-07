@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CrackFinder — equestrian performance analysis | Nassim Hammami</title>
-<meta name="description" content="Case study: a computer-vision pipeline that quantifies equine performance from ordinary video — SAM3 segmentation, motion recognition, and 3D vision combined into measurable performance signals.">
+<title>CrackFinder-ML — equestrian parcours analysis | Nassim Hammami</title>
+<meta name="description" content="Case study: CrackFinder-ML is a modular ML pipeline for equestrian parcours analysis — jump detection, SAM3 horse segmentation, and horse-level prediction end-to-end from a raw competition video, wired with a Fire CLI and DVC.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,11 +254,11 @@
         <a class="back-link" href="projects.html">← All projects</a>
         <p class="eyebrow">Sports Analytics · Switzerland</p>
         <h1>CrackFinder — equestrian analysis</h1>
-        <p class="lede">A computer-vision pipeline that reads equine performance from ordinary video — <strong>segmentation, motion recognition, and 3D vision</strong> quantifying what trainers judge by eye.</p>
+        <p class="lede">A modular ML pipeline for <strong>equestrian parcours analysis</strong> — it detects jumps, segments the horse with SAM3, and predicts the horse's level, end-to-end from a single raw competition video.</p>
         <div class="meta-chips">
-          <span class="chip"><b>ROLE</b>CV Engineer</span>
+          <span class="chip"><b>ROLE</b>ML Engineer</span>
           <span class="chip"><b>CLIENT</b>Confidential · Switzerland</span>
-          <span class="chip"><b>STATUS</b>Delivered</span>
+          <span class="chip"><b>STATUS</b>Active</span>
         </div>
         <div class="proj-links" aria-label="Project links">
           <span class="plink">
@@ -266,15 +266,10 @@
             <span class="plabel">GitHub</span>
             <span class="pna">Confidential</span>
           </span>
-          <span class="plink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg>
-            <span class="plabel">Client website</span>
-            <span class="pna">Not available</span>
-          </span>
         </div>
       </div>
       <div class="case-media" aria-label="CrackFinder segmentation preview">
-        <img src="crackfinder-preview.jpg" alt="Horse and rider mid-jump with segmentation mask outline">
+        <img src="crackfinder-preview.jpg" alt="Horse mid-jump with SAM3 segmentation mask outline">
       </div>
     </header>
 
@@ -284,16 +279,16 @@
         <h2 class="panel-title" id="t-challenge">The challenge</h2>
         <div class="panel-list">
           <div class="p-item">
-            <h3>A deformable, two-body subject</h3>
-            <p>Horse and rider move as one articulated mass — masks must separate them from rails and crowds.</p>
+            <h3>From raw video to a graded level</h3>
+            <p>A full parcours recording has to become one meaningful horse-level prediction.</p>
           </div>
           <div class="p-item">
-            <h3>Judgment locked in expert eyes</h3>
-            <p>Performance had to become measurable and comparable across horses and sessions.</p>
+            <h3>Find the jumps first</h3>
+            <p>The signal lives in the jump moments — they must be located and clipped out of long footage.</p>
           </div>
           <div class="p-item">
-            <h3>Footage from the wild</h3>
-            <p>Variable arenas, lighting, and cameras — no sensors on the horse.</p>
+            <h3>Isolate the horse</h3>
+            <p>Level cues are in the horse's motion, so it must be segmented cleanly from a busy arena.</p>
           </div>
         </div>
       </section>
@@ -304,29 +299,29 @@
           <div class="step-item">
             <span class="num">01</span>
             <div>
-              <h3>SAM3 segmentation</h3>
-              <p>Pixel-accurate horse-and-rider masks, robust to motion blur and arena clutter.</p>
+              <h3>Jump detector</h3>
+              <p>Detects jump events and extracts individual jump clips from full parcours videos.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">02</span>
             <div>
-              <h3>Motion recognition</h3>
-              <p>Mask sequences modeled over time to index the movements that matter in review.</p>
+              <h3>Horse segmentor (SAM3)</h3>
+              <p>Isolates the horse ROI in each jump clip with SAM3-based tracking and segmentation.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">03</span>
             <div>
-              <h3>3D vision layer</h3>
-              <p>2D signals lifted toward 3D geometry, comparable across camera placements.</p>
+              <h3>Level predictor</h3>
+              <p>Predicts the horse's level from sampled segmented jump clips.</p>
             </div>
           </div>
           <div class="step-item">
             <span class="num">04</span>
             <div>
-              <h3>Performance signals</h3>
-              <p>Segmentation, motion, and geometry aggregated into indicators built for prediction.</p>
+              <h3>Modular pipeline &amp; MLOps</h3>
+              <p>A Fire CLI, DVC-tracked data and models, and checkpoint export/evaluation tie it together.</p>
             </div>
           </div>
         </div>
@@ -336,19 +331,19 @@
         <h2 class="panel-title" id="t-outcomes">Outcomes</h2>
         <div class="panel-list">
           <div class="p-item">
-            <span class="o-num">Pixel-level</span>
-            <h3>SAM3 masks</h3>
-            <p>Horse and rider isolated cleanly in cluttered arenas.</p>
+            <span class="o-num">3 stages</span>
+            <h3>Modular pipeline</h3>
+            <p>Jump detection → segmentation → level prediction.</p>
           </div>
           <div class="p-item">
-            <span class="o-num">Video-only</span>
-            <h3>No sensors, no rigs</h3>
-            <p>Ordinary footage in, measurable signals out.</p>
+            <span class="o-num">End-to-end</span>
+            <h3>Video → level</h3>
+            <p>Raw parcours clip to predicted horse level in one command.</p>
           </div>
           <div class="p-item">
-            <span class="o-num">Prediction-ready</span>
-            <h3>Downstream signals</h3>
-            <p>Built to feed performance prediction models.</p>
+            <span class="o-num">MLOps-ready</span>
+            <h3>CLI + DVC</h3>
+            <p>Fire CLI, DVC versioning, and checkpoint export flows.</p>
           </div>
         </div>
       </section>
@@ -358,12 +353,13 @@
     <div class="case-foot">
       <div class="stack-line">
         <span class="stack-label">Stack</span>
-        <span class="tag">SAM3</span>
         <span class="tag">PyTorch</span>
-        <span class="tag">Motion recognition</span>
-        <span class="tag">3D vision</span>
+        <span class="tag">SAM3</span>
+        <span class="tag">Fire CLI</span>
+        <span class="tag">DVC</span>
+        <span class="tag">Segmentation</span>
         <span class="tag">Video pipelines</span>
-        <span class="tag">Python</span>
+        <span class="tag">Python 3.12</span>
       </div>
       <div class="foot-links">
         <a href="project-boveye.html"><span class="mono">←</span> BovEye</a>
