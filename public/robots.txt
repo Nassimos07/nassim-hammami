@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nassimos07.github.io/nassim-hammami/sitemap-index.xml
+Sitemap: https://nassimhammami.com/sitemap-index.xml
