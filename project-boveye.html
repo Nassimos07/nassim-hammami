@@ -58,10 +58,10 @@
     gap:14px;
     min-height:0;
   }
-  /* lock to one viewport on desktop */
+  /* keep desktop case pages full-height while allowing vertical scroll */
   @media (min-width:1000px) and (min-height:640px){
-    body{overflow:hidden;height:100vh;}
-    .wrap{height:calc(100vh - var(--footer-h));display:flex;flex-direction:column;}
+    body{overflow-x:hidden;overflow-y:auto;min-height:100vh;}
+    .wrap{min-height:calc(100vh - var(--footer-h));display:flex;flex-direction:column;}
     .case{flex:1;min-height:0;padding-bottom:10px;}
   }
 
